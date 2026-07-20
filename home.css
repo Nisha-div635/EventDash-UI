@@ -1,0 +1,93 @@
+nav {
+    height: 50px;
+    width: full;
+    color: hsl(0, 8%, 91%);
+    background-color: black;
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    position: sticky;
+
+}
+
+.c1 {
+    display: flex;
+    gap: 50px;
+    align-content: center;
+    justify-content: center;
+}
+
+.c1 a {
+    text-decoration: none;
+    color: hwb(202 89% 7%);
+    cursor: pointer;
+
+}
+
+button {
+    margin-left: 50px;
+    align-content: center;
+    border: 0px;
+    background-color: white;
+    color: hsl(235, 100%, 50%);
+    cursor: pointer;
+
+}
+.c2{
+    margin: 50px;
+    height: 300px;
+
+}
+#d1{
+    background: -webkit-linear-gradient(purple,blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.c3{
+    height: 75vh;
+    margin: 50px;
+}
+.c4{
+    display: flex;
+    gap: 30px;
+}
+#d2{
+    height: 150px;
+    width: 450px;
+    border: 2px solid black;
+    border-radius: 10px;
+    justify-items: center;
+    align-items: center;
+
+}
+#d2:hover{
+        /* background-image: linear-gradient(to right,purple,blue); */
+        background-color: black;
+        transition: 0.8s;
+        cursor: pointer;
+        color: white;
+}
+.c5{
+    display: flex;
+    gap: 30px;
+}
+.process{
+    height: 80vh;
+    margin: 50PX;
+}
+.upcomming-event{
+    height: 75vh;
+    width: full;
+    margin: 50px;
+}
+.c5{
+    display: flex;
+    gap: 30px;
+}
+#d3{
+    border: 2px solid black;
+    height: 50vh;
+    width: 50vh;
+}
