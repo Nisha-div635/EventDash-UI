@@ -1,7 +1,27 @@
 body {
     overflow-x: hidden;
-    margin: 0px;
+    margin: 0px; 
 }
+
+/* ========================================= */
+/* START OF SCROLL REVEAL ANIMATION CODE     */
+/* ========================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px); /* Pushes the element down by 40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform; /* Helps the browser animate smoothly */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Lifts the element back to its normal spot */
+}
+/* ========================================= */
+/* END OF SCROLL REVEAL ANIMATION CODE       */
+/* ========================================= */
+
+
 
 /* navbar */
 nav {
@@ -40,12 +60,21 @@ nav {
     cursor: pointer;
 }
 
-.login-btn {
-    margin-left: 830px;
-    background-color: black;
+.login-btn{
+    height:30px;
+    width:80px;
+    margin-left: 810px;
     color: white;
+    border-radius: 8px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
+    background: linear-gradient(to right, #7A65FF 20%, #38B2FE 100%);
+    border:none;
+
+}
+.login-btn:hover{
+    box-shadow: 0 5px 10px  #5ebffb;
+
 }
 
 /* hero section */
@@ -60,6 +89,19 @@ nav {
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
+.slide-in{  
+  animation: slideIn 1.2s ease-out forwards;
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); /* Starts 100px to the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Stops at its normal layout position */
+  }
+}
 
 #head-line {
     font-size: 40px;
@@ -71,24 +113,105 @@ nav {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
+.hero-btn{
+    border-radius: 25px;
+    height:50px;
+    width:170px;
+    font-size:14px;
+    background: linear-gradient(to right, #7A65FF 20%, #38B2FE 100%);
+    border:none;
+}
+.hero-btn:hover{
+    box-shadow: 0 5px 10px  #5ebffb;
+    transition: 0.4s;
+    transform: translateY(-2px);
+
+}
+
+
+
+/* new section */
+.stats-container {
+    background-color: #F8F9FA;
+    display: flex;
+    width: 100vw;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.stat-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    border-right: 1px solid #E2E8F0;
+    text-align: center;
+}
+
+/* Remove border from the last item */
+.stat-box:last-child {
+    border-right: none;
+}
+
+.stat-value {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    /* Creating the purple-to-blue gradient text */
+    background: linear-gradient(90deg, #7A65FF 0%, #38B2FE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-number, .stat-plus {
+    font-family: 'Space Mono', monospace; /* Used for the stylistic zero and tech look */
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.stat-label {
+    color: #79879A;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+    }
+    .stat-box {
+        border-right: none;
+        border-bottom: 1px solid #E2E8F0;
+        padding: 30px 20px;
+    }
+    .stat-box:last-child {
+        border-bottom: none;
+    }
+}
 
 /* Section-3 WHY CAMPUSCONNECT? */
 .sec-3 {
     height: 70vh;
-    margin: 50px 50px 100px 50px;
+    margin: 70px 50px 150px 50px;
 }
 
 
 .heading {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 38px;
-    line-height: 1.0;
+    margin-bottom:15px;
 }
 
 .subheading {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
-    line-height: 1.0;
+    margin-top:-10px;
 }
 
 .d1 {
@@ -101,26 +224,30 @@ nav {
     display: flex;
     gap: 30px;
     width: 100%;
+    justify-content: center;
+}
+.row-2{
+    margin-top:20px;
+    
 }
 .all-box-element{
-    margin-left:180px;
+    margin-top:50px;
+    
 }
 .box-element {
-    height: 180px;
+    height: 160px;
     width: 320px;
-    padding: 5px;
+    padding: 8px 5px 8px 10px ;
     border: 1px solid rgb(205, 208, 212);
-    border-radius: 10px;
-    justify-items: left;
-    /* align-items: bottom; */
-    background-image: linear-gradient(to top left, #f1fafc, #f6f2ff);
+    border-radius: 15px;
+    background: linear-gradient(to top left, #f1fcfc, #fef4fe);
+    box-shadow:1px 1px 2px 1px rgba(242, 238, 238, 0.952);
+
 }
 
 .box-element:hover {
     background: linear-gradient(to top left, #1dc8ff, #7a3cff);
-    /* background-image: linear-gradient(to right,rgb(138, 73, 198),rgb(27, 183, 231)); */
-    /* background-color: black; */
-    color: white;
+    color: black;
     transition: 0.8s;
     cursor: pointer;
     transform: translateY(-10px);
@@ -142,9 +269,8 @@ nav {
 /* section 4 STEPS OF CAMPUSCONNECT */
 
 .sec-4 {
-    min-height: 80vh;
-    /* Changed to min-height to allow vertical scrolling */
-    margin: 50px;
+    height: 80vh;
+    margin: 70px 50px 220px 50px;
 }
 
 .process {
@@ -182,9 +308,7 @@ nav {
     z-index: 2;
     display: flex;
     align-items: flex-start;
-    /* Aligns the circle and text to the top */
     gap: 30px;
-    /* Spacing between circle and text */
 }
 
 /* Circle */
@@ -273,7 +397,7 @@ nav {
 
 
 .sec-5 {
-    height: 75vh;
+    height: 70vh;
     line-height: 1.0;
     margin: 50px;
 }
@@ -282,7 +406,8 @@ nav {
     display: flex;
     gap: 30px;
     width: 100%;
-
+    margin-top:30px;
+    
 }
 
 .d3 {
@@ -295,15 +420,10 @@ nav {
     width: 100%;
 }
 
-
-/* section -6 */
-/* event gallery */
-
-
 /* section -6 */
 
 .sec-6 {
-    height: 80vh;
+    height: 70vh;
     width: 100%;
     line-height: 1.0;
     margin: 50px;
@@ -313,10 +433,11 @@ nav {
     display: flex;
     gap: 30px;
     width: 93%;
+    margin-top:50px;
+    margin-left:20px;
 }
 
 .img {
-    /* border: 2px solid black; */
     height: 50vh;
     width: 50vh;
 }
@@ -326,49 +447,123 @@ nav {
     height: 100%;
 
 }
-
-.button button {
-    border-radius: 5px;
+.view-more-btn{
     height: 50px;
-    width: 80px;
+    width: 50px;
+    font-size:25px;
+    margin-top:150px;
+    border-radius: 50%;
     cursor: pointer;
+    border:none;
+    color:rgb(143, 4, 170);
+    background: linear-gradient( #a8d1e7, #bfb3d8);
+
+    
 }
 
-.button button:hover {
-    background: linear-gradient(to top left, #1dc8ff, #7a3cff);
-    color: white;
+.view-more-btn:hover {
+    background: linear-gradient( #88b5cd, #b19ae3);
+
 }
 
-/* section -7 */
-/* create event */
+/* Testimonials */
+.testimonials{
+height: 50vh;
+margin: 20px 50px 100px 50px;
+
+}
+#review-box{
+    height:200px;
+    width:350px;
+    margin-top:20px;
+    padding:5px 10px 35px 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    background: linear-gradient(to top left, #f1fcfc, #fef4fe);
+    box-shadow:1px 1px 2px 1px rgba(242, 238, 238, 0.952);
+}
+#review-box:hover{
+    background: linear-gradient(to top left,#edfbfb, #fceefc);
+    border: 1px solid rgb(205, 208, 212);
+    color: black;
+    transition: 0.8s;
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+#review-box h4{
+    margin-bottom:5px;
+}
+.designation{
+    margin-top:-10px;
+}
+
 
   /* section -7 */
 .sec-7 {
     height: 50vh;
     width: 100%;
-    justify-items: center;
     align-content: center;
     background-color: black;
     color: white;
+    padding-left:80px;
+    padding-top:-5px;
+    display:flex;
 }
 
-.sec-7 h3 {
-    justify-content: center;
-    background: linear-gradient(to right, #7a3cff, #1dc8ff);
+.sec-7 h1 {
+    /* justify-content: center; */
+    font-size:80px;
+    /* background: linear-gradient(to right, #7a3cff, #1dc8ff);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
 }
 
 .sec-7 button {
-    margin-left: 90vh;
-    height: 50px;
-    background-color: white;
+    margin-left:250px;
+    margin-top:90px;
+    height: 150px;
+    width:150px;
     color: black;
-    border-radius: 8px;
+    border-radius: 50%;
     cursor: pointer;
+    font-size:15px;
+    font-family:cursive;
+
+
 }
 
-.sec-7 button:hover {
-    background: linear-gradient(to top left, #1dc8ff, #7a3cff);
-    color: white;
+
+
+/* footer */
+
+.footer-section{
+    padding-top:30px;
+    padding-left: 50px;
+    height: 300px;
+    color:#0b1033;
+    background-image: linear-gradient(to top left, #f1fafc, #ece7f6);
 }
+.footer{
+    display:flex;
+    gap:80px;
+}
+#footer-title{
+    font-size:25px;
+}
+.footer-elements{
+    display:flex;
+    gap:120px;
+    margin-bottom:30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.footer-columns li{
+    margin-bottom:20px;
+}
+.copyright-reserved{
+    display:flex;
+    margin-top:38px;
+}
+
+
+
+
