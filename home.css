@@ -89,6 +89,19 @@ nav {
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
+.slide-in{  
+  animation: slideIn 1.2s ease-out forwards;
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); /* Starts 100px to the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Stops at its normal layout position */
+  }
+}
 
 #head-line {
     font-size: 40px;
