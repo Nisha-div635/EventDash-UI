@@ -49,16 +49,22 @@ nav {
 }
 
 .nav-links {
-    display: flex;
-    gap: 50px;
-    align-content: center;
+  display: flex;
+  gap: 20px;
+  position: relative;
+  font-family: sans-serif;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: hwb(202 89% 7%);
-    cursor: pointer;
+  text-decoration: none;
+  color: hsl(0, 9%, 96%);
+  padding: 8px 12px;
+  position: relative;
 }
+/* Hide the dropdown menu by default */
+
+
+
 
 .login-btn{
     height:30px;
