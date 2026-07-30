@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | CampusConnect</title>
+    <link rel="stylesheet" href="dashboard-common.css">
+    <link rel="stylesheet" href="user1.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <!-- sidebar -->
+        <div class="sidebar">
+            <div>
+                <h1 class="logo">CAMPUSCONNECT</h1>
+                <section class="sidebar-menu">
+                    <ul>
+                        <li><a href="#" class="active" data-section="overview"><i class="bi bi-grid"></i> Dashboard</a></li>
+                        <li><a href="#" data-section="upcoming"><i class="bi bi-calendar-plus"></i> Upcoming Events</a></li>
+                        <li><a href="#" data-section="ongoing"><i class="bi bi-broadcast"></i> Ongoing Events</a></li>
+                        <li><a href="#" data-section="register"><i class="bi bi-pencil-square"></i> Register Event</a></li>
+                        <li><a href="#" data-section="feedback"><i class="bi bi-chat-dots"></i> App Feedback</a></li>
+                        <li><a href="#" data-section="gallery"><i class="bi bi-images"></i> Gallery</a></li>
+                        <li><a href="#" data-section="help"><i class="bi bi-question-circle"></i> Help Centre</a></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="sidebar-footer">
+                <p>Logged in as</p>
+                <h5>Student</h5>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div class="main-content">
+
+            <!-- top navbar -->
+            <nav class="topnav">
+                <a href="home.html">HOME</a>
+                <a href="home.html#about">ABOUT US</a>
+                <a href="home.html#contact">CONTACT US</a>
+            </nav>
+
+            <div class="sec-1">
+                <section>
+                    <h1 class="heading">MY <span class="d1">DASHBOARD</span></h1>
+                    <p class="subheading"><i>Discover events, register in a click and track what you've joined.</i></p>
+                </section>
+
+                <section>
+                    <button class="admin-btn">
+                        <div class="avatar-circle">S</div>
+                        <span class="btn-text">Student</span>
+                    </button>
+                </section>
+            </div>
+
+            <!-- stat cards -->
+            <div class="sec-2">
+                <div class="box-element">
+                    <div>
+                        <p class="head-line header">EVENTS REGISTERED</p>
+                        <h1 class="counts">5</h1>
+                        <p class="sub-line">so far this year</p>
+                    </div>
+                    <div class="avatar-circle">R</div>
+                </div>
+                <div class="box-element">
+                    <div>
+                        <p class="head-line header">EVENTS ATTENDED</p>
+                        <h1 class="counts">3</h1>
+                        <p class="sub-line">checked in successfully</p>
+                    </div>
+                    <div class="avatar-circle">A</div>
+                </div>
+                <div class="box-element">
+                    <div>
+                        <p class="head-line header">ONGOING NOW</p>
+                        <h1 class="counts">1</h1>
+                        <p class="sub-line">happening today</p>
+                    </div>
+                    <div class="avatar-circle">O</div>
+                </div>
+                <div class="box-element">
+                    <div>
+                        <p class="head-line header">UPCOMING</p>
+                        <h1 class="counts">2</h1>
+                        <p class="sub-line">on your calendar</p>
+                    </div>
+                    <div class="avatar-circle">U</div>
+                </div>
+            </div>
+
+            <!-- quick tools -->
+            <div class="sec-3">
+                <button class="tool-box">
+                    <div class="avatar-circle">G</div>
+                    <div class="tool-box-data">
+                        <p class="head-line">Event Gallery</p>
+                        <p class="sub-line">Browse photos from past events</p>
+                    </div>
+                </button>
+                <button class="tool-box">
+                    <div class="avatar-circle">H</div>
+                    <div class="tool-box-data">
+                        <p class="head-line">Help</p>
+                        <p class="sub-line">Guides, FAQs and support tickets</p>
+                    </div>
+                </button>
+            </div>
+
+            <div class="sec-4">
+
+                <!-- Ongoing Events -->
+                <div class="panel">
+                    <h2 class="panel-title">Ongoing Events</h2>
+                    <div class="card-grid">
+                        <div class="event-card">
+                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="">
+                            <div class="event-card-body">
+                                <span class="status-pill status-live">Live now</span>
+                                <h4>Tech Fest 2026 - Day 1</h4>
+                                <p>Main Auditorium &middot; Ends 6:00 PM</p>
+                                <button class="btn-secondary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="panel">
+                    <h2 class="panel-title">Upcoming Events</h2>
+                    <div class="card-grid">
+                        <div class="event-card">
+                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="">
+                            <div class="event-card-body">
+                                <span class="status-pill status-upcoming">15 Aug 2026</span>
+                                <h4>Cultural Night</h4>
+                                <p>Open Air Theatre &middot; Free entry</p>
+                                <button class="btn-primary">Register</button>
+                            </div>
+                        </div>
+                        <div class="event-card">
+                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="">
+                            <div class="event-card-body">
+                                <span class="status-pill status-upcoming">22 Aug 2026</span>
+                                <h4>Startup Pitch Meetup</h4>
+                                <p>Seminar Hall 2 &middot; Limited seats</p>
+                                <button class="btn-primary">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register for an Event (search / browse) -->
+                <div class="panel">
+                    <h2 class="panel-title">Register for an Event</h2>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>Search Events</label>
+                            <input type="text" placeholder="Search by name, category or venue">
+                        </div>
+                        <div class="form-field">
+                            <label>Category</label>
+                            <select>
+                                <option>All</option>
+                                <option>Technical</option>
+                                <option>Cultural</option>
+                                <option>Sports</option>
+                                <option>Workshop</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-top:18px;">
+                        <button class="btn-primary">Search</button>
+                    </div>
+                </div>
+
+                <!-- App Feedback -->
+                <div class="panel">
+                    <h2 class="panel-title">App Feedback</h2>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>Rating</label>
+                            <select>
+                                <option>5 - Excellent</option>
+                                <option>4 - Good</option>
+                                <option>3 - Average</option>
+                                <option>2 - Poor</option>
+                                <option>1 - Very Poor</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label>Category</label>
+                            <select>
+                                <option>General</option>
+                                <option>Bug Report</option>
+                                <option>Feature Request</option>
+                                <option>Event Experience</option>
+                            </select>
+                        </div>
+                        <div class="form-field full">
+                            <label>Your Feedback</label>
+                            <textarea placeholder="Tell us what's working and what's not..."></textarea>
+                        </div>
+                    </div>
+                    <div style="margin-top:18px;">
+                        <button class="btn-primary">Submit Feedback</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
