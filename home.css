@@ -480,8 +480,8 @@ height: 50vh;
 margin: 20px 50px 100px 50px;
 
 }
-#review-box{
-    height:200px;
+.review-box{
+    height:180px;
     width:350px;
     margin-top:20px;
     padding:5px 10px 35px 10px;
@@ -490,7 +490,7 @@ margin: 20px 50px 100px 50px;
     background: linear-gradient(to top left, #f1fcfc, #fef4fe);
     box-shadow:1px 1px 2px 1px rgba(242, 238, 238, 0.952);
 }
-#review-box:hover{
+.review-box:hover{
     background: linear-gradient(to top left,#edfbfb, #fceefc);
     border: 1px solid rgb(205, 208, 212);
     color: black;
@@ -498,7 +498,7 @@ margin: 20px 50px 100px 50px;
     cursor: pointer;
     transform: translateY(-10px);
 }
-#review-box h4{
+.review-box h4{
     margin-bottom:5px;
 }
 .designation{
