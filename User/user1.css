@@ -1,0 +1,527 @@
+* {
+    margin: 0px;
+    /* box-sizing: border-box; */
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* .dashboard {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    min-height: 100vh;
+} */
+
+/* ---------------- sidebar ---------------- */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background: #1e1e2f;
+    color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.logo {
+    font-size: 15px;
+    white-space: nowrap;
+    margin-top: 50px;
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    background: transparent;
+    color: #7a3cff;
+    border: none;
+    font-size: 24px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+        transition: left 0.3s ease-in-out;
+
+}
+
+.sidebar-footer {
+    margin-top: 200px;
+    background: linear-gradient(to right, #7a3cff, #1dc8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 20px;
+
+}
+/* .sidebar {
+    color: black;
+    background: linear-gradient(to top left, #e2f6f6, #f3dff3);
+    padding-top: 30px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    background: linear-gradient(to right, #7a3cff, #1dc8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.sidebar-menu li {
+    padding-bottom: 18px;
+}
+
+.sidebar-menu li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.sidebar-menu li a i {
+    font-size: 16px;
+    width: 18px;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+    background: linear-gradient(to right, #7A65FF 20%, #38B2FE 100%);
+    color: white;
+    transition: 0.3s;
+}
+
+.sidebar-footer {
+    padding: 0 20px 30px 0;
+}
+
+.sidebar-footer p {
+    font-size: 13px;
+    color: #6b6870;
+}
+
+.sidebar-footer h5 {
+    font-size: 15px;
+} */
+
+/* ---------------- main content ---------------- */
+.main-content {
+    width: 100%;
+    background-color: rgb(244, 243, 243);
+    min-height: 100vh;
+}
+
+/* top navbar: Home / About Us / Contact Us */
+.topnav {
+    height: 55px;
+    width: 100%;
+    background-color: rgb(8, 8, 8);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    gap: 30px;
+}
+
+.topnav a {
+    text-decoration: none;
+    color: hsl(0, 9%, 96%);
+    font-family: sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+}
+
+.topnav a:hover {
+    color: #5ebffb;
+}
+
+/* header row: page title + profile button */
+.sec-1 {
+    min-height: 13vh;
+    display: flex;
+    gap: 40px;
+    padding: 30px 40px 0 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.heading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.subheading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    margin-top: -10px;
+}
+
+.d1 {
+    background: linear-gradient(to right, #7a3cff, #1dc8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.admin-btn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 5px;
+    border: 1px solid #757275;
+    border-radius: 30px;
+    padding: 6px 5px 6px 8px;
+    height: 50px;
+    width: 130px;
+    font-size: 14px;
+    cursor: pointer;
+    background: linear-gradient(to top left, #e2f6f6, #f3dff3);
+}
+
+.admin-btn:hover {
+    background: linear-gradient(to top left, #c4e5e5, #e1cce1);
+    transition: 0.4s;
+    transform: translateY(-2px);
+}
+
+.avatar-circle {
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(to right, #7A65FF 20%, #38B2FE 100%);
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    flex-shrink: 0;
+}
+
+.btn-text {
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* ---------------- stat cards (sec-2 style) ---------------- */
+.sec-2 {
+    padding: 20px 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.box-element {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100px;
+    width: 230px;
+    padding: 15px 15px 8px 20px;
+    border: 1px solid rgb(205, 208, 212);
+    border-radius: 15px;
+    background: linear-gradient(to top left, #f1fcfc, #fef4fe);
+    box-shadow: 1px 1px 2px 1px rgba(242, 238, 238, 0.952);
+}
+
+.box-element:hover {
+    color: black;
+    transition: 0.8s;
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+
+.header {
+    font-size: 14px;
+    font-weight: 400;
+    color: #7b787b;
+}
+
+.counts {
+    font-size: 40px;
+}
+
+/* ---------------- tool cards (sec-3 style) ---------------- */
+.sec-3 {
+    padding: 10px 40px 30px 40px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.tool-box {
+    display: flex;
+    gap: 20px;
+    height: 70px;
+    width: 340px;
+    background-color: white;
+    border: 1px solid rgb(205, 208, 212);
+    border-radius: 10px;
+    padding-left: 30px;
+    align-items: center;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+
+.tool-box:hover {
+    transform: translateY(-4px);
+    transition: 0.3s;
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.08);
+}
+
+.tool-box-data {
+    justify-items: flex-start;
+}
+
+.head-line {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sub-line {
+    font-size: 13px;
+    color: rgb(59, 58, 58);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------------- generic content section wrapper ---------------- */
+.sec-4 {
+    padding: 10px 40px 40px 40px;
+}
+
+.panel {
+    background: white;
+    border: 1px solid rgb(205, 208, 212);
+    border-radius: 15px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+}
+
+.panel-title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+/* buttons matching hero-btn / login-btn gradient */
+.btn-primary {
+    border-radius: 25px;
+    height: 42px;
+    padding: 0 22px;
+    font-size: 14px;
+    color: white;
+    background: linear-gradient(to right, #7A65FF 20%, #38B2FE 100%);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 5px 10px #5ebffb;
+    transition: 0.4s;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    border-radius: 25px;
+    height: 42px;
+    padding: 0 22px;
+    font-size: 14px;
+    color: #333;
+    background: white;
+    border: 1px solid #cdd0d4;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: #f1f1f1;
+}
+
+.btn-danger {
+    border-radius: 25px;
+    height: 36px;
+    padding: 0 18px;
+    font-size: 13px;
+    color: #b3261e;
+    background: #fdecea;
+    border: 1px solid #f3c6c2;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: #f9d6d3;
+}
+
+/* simple form styling reused across host / coordinator forms */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field.full {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    font-size: 13px;
+    color: #6b6870;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    border: 1px solid #cdd0d4;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* simple table used for attendance / event lists */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th {
+    text-align: left;
+    font-size: 13px;
+    color: #7b787b;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.data-table td {
+    padding: 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.status-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-present {
+    background: #e4f8ea;
+    color: #1e8a4c;
+}
+
+.status-absent {
+    background: #fdecea;
+    color: #b3261e;
+}
+
+.status-live {
+    background: #e4f8ea;
+    color: #1e8a4c;
+}
+
+.status-upcoming {
+    background: #eef0ff;
+    color: #4b3ccf;
+}
+
+.status-ended {
+    background: #f1f1f1;
+    color: #6b6870;
+}
+
+/* event / gallery card grid used on host + user dashboards */
+.card-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.event-card {
+    width: 260px;
+    border: 1px solid rgb(205, 208, 212);
+    border-radius: 15px;
+    background: white;
+    overflow: hidden;
+}
+
+.event-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.event-card-body {
+    padding: 14px 16px;
+}
+
+.event-card-body h4 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.event-card-body p {
+    font-size: 13px;
+    color: rgb(59, 58, 58);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: none;
+    }
+}
+
+/* user-specific accent */
+.sidebar-menu a[data-section="upcoming"] i {
+    color: #7a3cff;
+}

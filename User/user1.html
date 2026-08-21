@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dashboard | CampusConnect</title>
-    <link rel="stylesheet" href="dashboard-common.css">
     <link rel="stylesheet" href="user1.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
 
     <div class="dashboard">
 
         <!-- sidebar -->
-        <div class="sidebar">
+        <!-- <div class="sidebar">
             <div>
                 <h1 class="logo">CAMPUSCONNECT</h1>
                 <section class="sidebar-menu">
                     <ul>
-                        <li><a href="#" class="active" data-section="overview"><i class="bi bi-grid"></i> Dashboard</a></li>
-                        <li><a href="#" data-section="upcoming"><i class="bi bi-calendar-plus"></i> Upcoming Events</a></li>
+                        <li><a href="#" class="active" data-section="overview"><i class="bi bi-grid"></i> Dashboard</a>
+                        </li>
+                        <li><a href="#" data-section="upcoming"><i class="bi bi-calendar-plus"></i> Upcoming Events</a>
+                        </li>
                         <li><a href="#" data-section="ongoing"><i class="bi bi-broadcast"></i> Ongoing Events</a></li>
-                        <li><a href="#" data-section="register"><i class="bi bi-pencil-square"></i> Register Event</a></li>
+                        <li><a href="#" data-section="register"><i class="bi bi-pencil-square"></i> Register Event</a>
+                        </li>
                         <li><a href="#" data-section="feedback"><i class="bi bi-chat-dots"></i> App Feedback</a></li>
                         <li><a href="#" data-section="gallery"><i class="bi bi-images"></i> Gallery</a></li>
                         <li><a href="#" data-section="help"><i class="bi bi-question-circle"></i> Help Centre</a></li>
@@ -32,7 +36,37 @@
                 <p>Logged in as</p>
                 <h5>Student</h5>
             </div>
+        </div> -->
+        
+
+        <script src="user1.js" defer></script>
+
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+        <div class="sidebar" id="sidebar">
+
+            <section class="sidebar-menu">
+                <ul type="none">
+                    <li>
+                        <h1 class="logo">CAMPUSCONNECT</h1>
+                    </li>
+                    <li>Dashboard</li>
+                    <li>Hosts</li>
+                    <li>Coordinators</li>
+                    <li>Students</li>
+                    <li>Events</li>
+                    <li>Hosts</li>
+                    <li>Gallery</li>
+                    <li>Help Centre</li>
+                </ul>
+
+            </section>
+            <div class="sidebar-footer">
+                <p>Logged in as</p>
+                <h5>Admin</h5>
+            </div>
         </div>
+
 
         <!-- main content -->
         <div class="main-content">
@@ -119,7 +153,8 @@
                     <h2 class="panel-title">Ongoing Events</h2>
                     <div class="card-grid">
                         <div class="event-card">
-                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="">
+                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+                                alt="">
                             <div class="event-card-body">
                                 <span class="status-pill status-live">Live now</span>
                                 <h4>Tech Fest 2026 - Day 1</h4>
@@ -135,7 +170,8 @@
                     <h2 class="panel-title">Upcoming Events</h2>
                     <div class="card-grid">
                         <div class="event-card">
-                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="">
+                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+                                alt="">
                             <div class="event-card-body">
                                 <span class="status-pill status-upcoming">15 Aug 2026</span>
                                 <h4>Cultural Night</h4>
@@ -144,7 +180,8 @@
                             </div>
                         </div>
                         <div class="event-card">
-                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="">
+                            <img src="https://th.bing.com/th/id/OIP.RCG47zOXJAGLTKjrRk4oaAHaEJ?w=270&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+                                alt="">
                             <div class="event-card-body">
                                 <span class="status-pill status-upcoming">22 Aug 2026</span>
                                 <h4>Startup Pitch Meetup</h4>
@@ -218,4 +255,5 @@
     </div>
 
 </body>
+
 </html>

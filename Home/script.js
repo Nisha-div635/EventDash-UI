@@ -1,5 +1,4 @@
-// START OF SCROLL REVEAL ANIMATION CODE 
-// =========================================
+
 document.addEventListener('DOMContentLoaded', () => {
     // Select all elements that have the 'reveal' class
     const reveals = document.querySelectorAll('.reveal');
