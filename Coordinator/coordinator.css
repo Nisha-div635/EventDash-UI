@@ -55,7 +55,7 @@
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
-        transition: left 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out;
 
 }
 
@@ -79,14 +79,17 @@
     background-color: rgb(244, 243, 243);
     transform: translateX(0);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform;
+    will-change: transform;
     /* min-height: 100vh; */
 }
+
 .main-content.shifted {
 
-        transform: translateX(100px);   /* same as .sidebar width */
+    transform: translateX(100px);
+    /* same as .sidebar width */
 
 }
+
 /* top navbar: Home / About Us / Contact Us */
 .topnav {
     height: 55px;
@@ -463,6 +466,7 @@
     .dashboard {
         grid-template-columns: 1fr;
     }
+
     .sidebar {
         display: none;
     }
