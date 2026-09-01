@@ -206,25 +206,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* .admin-btn {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    border: 1px solid #334155;
-    border-radius: 30px;
-    padding: 4px 10px 4px 6px;
-    height: 40px;
-    width: 105px;
-    font-size: 14px;
-    cursor: pointer;
-    background: #1e293b;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
 
-.admin-btn:hover {
-    background: #334155;
-    transition: 0.3s;
-} */
 
 .admin-dropdown-container {
     position: relative;
