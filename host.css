@@ -42,12 +42,14 @@ body {
 
 /* ------------dashboard------------- */
 .sidebar {
-    margin-top: 30px;
+    margin-top: 50px;
+    height: 700px;
     width: 100px;
     background-color: rgb(244, 243, 243);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     justify-content: center;
-
+    top: 0;
+    position: fixed;
 }
 
 i {
@@ -68,12 +70,22 @@ i {
 
 }
 
+ .fa-solid{
+  color: #636E72; 
+  transition: color 0.2s ease-in-out, transform 0.2s ease;
+}
+
+.fa-solid:hover {
+  color:black;
+}
+
 
 /* ---------------- main content ---------------- */
 .main-content {
-    width: 100%;
+    width: 80%;
     background-color: rgb(244, 243, 243);
     min-height: 100vh;
+    margin-left: 180px;
 }
 
 
@@ -168,7 +180,7 @@ i {
     border: 1px solid rgb(205, 208, 212);
     border-radius: 15px;
     background: linear-gradient(to top left, #f1fcfc, #fef4fe);
-    box-shadow: 1px 1px 2px 1px rgba(242, 238, 238, 0.952);
+ 
 }
 
 .box-element:hover {
@@ -176,6 +188,7 @@ i {
     transition: 0.8s;
     cursor: pointer;
     transform: translateY(-10px);
+     box-shadow: 0 5px 10px #38B2FE;
 }
 
 .header {
@@ -199,8 +212,8 @@ i {
 .tool-box {
     display: flex;
     gap: 20px;
-    height: 70px;
-    width: 340px;
+    height: 100px;
+    width: 555px;
     background-color: white;
     border: 1px solid rgb(205, 208, 212);
     border-radius: 10px;
@@ -214,7 +227,7 @@ i {
 .tool-box:hover {
     transform: translateY(-4px);
     transition: 0.3s;
-    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 10px #7A65FF;
 }
 
 .tool-box-data {
