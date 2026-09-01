@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinator Dashboard | CampusConnect</title>
+    <link rel="stylesheet" href="coordinator.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="dashboard">
+
+        <header class="top-navbar">
+            <div class="nav-brand">
+                <h1 class="logo-text">CAMPUSCONNECT</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="home.html" onclick="logoutCoordinator(event)">Home</a>
+                <a href="#">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="#">Contact Us</a>
+            </nav>
+            <div class="admin-dropdown-container">
+                <button class="admin-btn">
+                    <div class="avatar-circle">C</div>
+                    <span class="btn-text">Coordinator</span>
+                    <i class="bi bi-chevron-down dropdown-arrow"></i>
+                </button>
+                <div class="admin-dropdown-menu">
+                    <a href="#" onclick="logoutCoordinator(event)"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <aside class="sidebar" id="sidebar" onmouseenter="expandSidebar()" onmouseleave="collapseSidebar()">
+            <div class="sidebar-header">
+                <h1 class="logo-mini">CC</h1>
+            </div>
+
+            <nav class="sidebar-menu">
+                <ul type="none">
+                    <li><a href="#" class="nav-link active" onclick="switchView('dashboard', this)"><i class="bi bi-grid"></i> <span class="menu-text">Dashboard</span></a></li>
+                    <li><a href="#" class="nav-link" onclick="switchView('hosts', this)"><i class="bi bi-person-badge"></i> <span class="menu-text">Hosts</span></a></li>
+                    <li><a href="#" class="nav-link" onclick="switchView('attendance', this)"><i class="bi bi-check2-square"></i> <span class="menu-text">Students (Attendance)</span></a></li>
+                    <li><a href="#" class="nav-link" onclick="switchView('monitor', this)"><i class="bi bi-activity"></i> <span class="menu-text">Events (Monitor)</span></a></li>
+                    <li><a href="#" class="nav-link" onclick="window.location.href='gallery.html'"><i class="bi bi-images"></i> <span class="menu-text">Gallery</span></a></li>
+                    <li><a href="#" class="nav-link" onclick="switchView('help', this)"><i class="bi bi-question-circle"></i> <span class="menu-text">Help Centre</span></a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p class="footer-sub">Logged in as</p>
+                <h5 class="footer-title">Coordinator</h5>
+            </div>
+        </aside>
+
+        <main class="main-content" id="mainContent">
+
+            <div class="sec-1">
+                <section>
+                    <h1 class="heading">COORDINATOR <span class="d1">DASHBOARD</span></h1>
+                    <p class="subheading"><i>Mark attendance, monitor event activity and manage gallery uploads.</i></p>
+                </section>
+            </div>
+
+            <div id="dynamic-view">
+                <div id="view-dashboard">
+                    <div class="sec-2">
+                        <div class="box-element" onclick="switchView('monitor', document.querySelector('.sidebar-menu li:nth-child(5) a'))">
+                            <div>
+                                <p class="header">ASSIGNED EVENTS</p>
+                                <h1 class="counts">3</h1>
+                                <p class="sub-line">currently monitoring</p>
+                            </div>
+                            <div class="icon-circle"><i class="bi bi-calendar-event"></i></div>
+                        </div>
+                        <div class="box-element" onclick="switchView('attendance', document.querySelector('.sidebar-menu li:nth-child(4) a'))">
+                            <div>
+                                <p class="header">CHECKED IN</p>
+                                <h1 class="counts">128</h1>
+                                <p class="sub-line">across today's events</p>
+                            </div>
+                            <div class="icon-circle"><i class="bi bi-people-fill"></i></div>
+                        </div>
+                        <div class="box-element" onclick="switchView('attendance', document.querySelector('.sidebar-menu li:nth-child(4) a'))">
+                            <div>
+                                <p class="header">PENDING</p>
+                                <h1 class="counts">2</h1>
+                                <p class="sub-line">sessions to mark</p>
+                            </div>
+                            <div class="icon-circle"><i class="bi bi-clock-history"></i></div>
+                        </div>
+                        <div class="box-element" onclick="window.location.href='gallery.html'">
+                            <div>
+                                <p class="header">PHOTOS UPLOADED</p>
+                                <h1 class="counts">46</h1>
+                                <p class="sub-line">to event gallery</p>
+                            </div>
+                            <div class="icon-circle"><i class="bi bi-images"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="photo-scroll-section">
+                        <h3 class="section-subtitle">Event Snapshots & Memories</h3>
+                        <div class="photo-scroll-container">
+                            <div class="scroll-img-card"><img src="https://picsum.photos/300/180?random=20" alt=""><p>Tech Fest Day 1</p></div>
+                            <div class="scroll-img-card"><img src="https://picsum.photos/300/180?random=21" alt=""><p>Cultural Stage</p></div>
+                            <div class="scroll-img-card"><img src="https://picsum.photos/300/180?random=22" alt=""><p>Startup Pitch Session</p></div>
+                            <div class="scroll-img-card"><img src="https://picsum.photos/300/180?random=23" alt=""><p>Award Ceremony</p></div>
+                        </div>
+                    </div>
+
+                    <div class="sec-3">
+                        <button class="tool-box" onclick="window.location.href='gallery.html'">
+                            <div class="icon-circle"><i class="bi bi-image"></i></div>
+                            <div class="tool-box-data">
+                                <p class="head-line">Event Gallery Manager</p>
+                                <p class="sub-line">Add photos from events you're covering</p>
+                            </div>
+                        </button>
+                        <button class="tool-box" onclick="switchView('help', null)">
+                            <div class="icon-circle"><i class="bi bi-headset"></i></div>
+                            <div class="tool-box-data">
+                                <p class="head-line">Help Centre</p>
+                                <p class="sub-line">Guides, FAQs and support tickets</p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="live-ticker-wrapper">
+                        <div class="live-badge-box"><span class="live-dot"></span> LIVE</div>
+                        <div class="ticker-viewport">
+                            <div class="ticker-content">
+                                <span>🔴 &nbsp; Tech Fest 2026 CodeStorm is active at Main Auditorium (Room 102)! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+                                <span>🔴 &nbsp; Startup Pitch Meetup ongoing at MBA Block Seminar Hall 3! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="view-content-container" class="table-view-container" style="display: none;">
+                    <div class="table-header-bar">
+                        <h2 id="content-title">Details View</h2>
+                        <button class="back-dashboard-btn" onclick="switchView('dashboard', document.querySelector('.sidebar-menu .nav-link'))"><i class="bi bi-arrow-left"></i> Back to Dashboard</button>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-responsive" id="content-body">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="coordinator.js" defer></script>
+</body>
+
+</html>

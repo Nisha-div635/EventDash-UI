@@ -70,3 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(counter);
     });
 });
+function handleLoginRedirect() {
+        // Set admin session state when clicking login/entering dashboard
+        localStorage.setItem('campusConnectAdminAuth', 'true');
+        window.location.href = 'index.html'; // Or your dashboard file name
+    }
