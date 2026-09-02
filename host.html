@@ -5,220 +5,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Host Dashboard | CampusConnect</title>
-    <!-- <link rel="stylesheet" href="dashboard-common.css"> -->
     <link rel="stylesheet" href="host.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-    <!-- top navbar -->
+    <!-- Top Navbar -->
     <nav class="topnav">
         <a href="home.html">HOME</a>
         <a href="home.html#about">ABOUT US</a>
         <a href="home.html#contact">CONTACT US</a>
     </nav>
 
-    <div class="dashboard">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar" id="sidebar" onmouseenter="expandSidebar()" onmouseleave="collapseSidebar()">
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="active" onclick="switchView('dashboard', this); return false;">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="switchView('createEvent', this); return false;">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        <span class="link-text">Create Event</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="switchView('myEvents', this); return false;">
+                        <i class="fa-solid fa-calendar-week"></i>
+                        <span class="link-text">My Events</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="switchView('gallery', this); return false;">
+                        <i class="fa-solid fa-image"></i>
+                        <span class="link-text">Event Gallery</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="host-guide.html">
+                        <i class="fa-solid fa-person-circle-question"></i>
+                        <span class="link-text">Help & Guide</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="logoutHost(event)">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <span class="link-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
 
-        <!-- sidebar -->
-        <div class="sidebar" id="sidebar">
-
-            <section class="sidebar-menu">
-                <ul type="none">
-
-
-                    <li><i class="fa-solid fa-user" ></i></li>
-                    <li><i class="fa-solid fa-calendar-week"></i></li>
-                    <li><a href="#"><i class="fa-solid fa-image"></i></a></li>
-                    <li><a href="host-guide.html"><i class="fa-solid fa-person-circle-question"></i></a></li>
-                </ul>
-
-            </section>
             <div class="sidebar-footer">
                 <p>Logged in as</p>
                 <h5>Host</h5>
             </div>
         </div>
 
-        <!-- main content -->
+        <!-- Main Content Area -->
         <div class="main-content">
+            
+            <!-- Dashboard View -->
+            <div id="view-dashboard">
+                <div class="sec-1">
+                    <div>
+                        <h1 class="heading">HOST <span class="d1">DASHBOARD</span></h1>
+                        <p class="subheading">Create and manage every event under your society.</p>
+                    </div>
 
-            <div class="sec-1">
-                <section>
-                    <h1 class="heading">HOST <span class="d1">DASHBOARD</span></h1>
-                    <p class="subheading"><i>Create and manage every event under your society.</i></p>
-                </section>
-
-                <section>
                     <button class="admin-btn">
                         <div class="avatar-circle">H</div>
                         <span class="btn-text">Host</span>
                     </button>
-                </section>
+                </div>
+
+                <!-- Stat Cards -->
+                <div class="sec-2">
+                    <div class="box-element" onclick="switchView('myEvents')">
+                        <div>
+                            <p class="header">TOTAL EVENTS</p>
+                            <h1 class="counts">6</h1>
+                        </div>
+                        <div class="avatar-circle">E</div>
+                    </div>
+                    <div class="box-element" onclick="switchView('myEvents')">
+                        <div>
+                            <p class="header">LIVE NOW</p>
+                            <h1 class="counts">1</h1>
+                        </div>
+                        <div class="avatar-circle">L</div>
+                    </div>
+                    <div class="box-element">
+                        <div>
+                            <p class="header">TOTAL REGISTRATIONS</p>
+                            <h1 class="counts">312</h1>
+                        </div>
+                        <div class="avatar-circle">R</div>
+                    </div>
+                    <div class="box-element">
+                        <div>
+                            <p class="header">AVG. FEEDBACK RATING</p>
+                            <h1 class="counts">4.6</h1>
+                        </div>
+                        <div class="avatar-circle">F</div>
+                    </div>
+                </div>
+
+                <!-- Quick Tool Cards -->
+                <div class="sec-3">
+                    <button class="tool-box" onclick="switchView('gallery')">
+                        <div class="avatar-circle">G</div>
+                        <div class="tool-box-data">
+                            <p class="head-line">Event Gallery</p>
+                            <p class="sub-line">Browse and add photos from your events</p>
+                        </div>
+                    </button>
+                    <button class="tool-box" onclick="window.location.href='host-guide.html'">
+                        <div class="avatar-circle">H</div>
+                        <div class="tool-box-data">
+                            <p class="head-line">Help & Guide</p>
+                            <p class="sub-line">Guides, FAQs and support tickets</p>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Inline Panel Section -->
+                <div class="sec-4">
+                    <div class="panel">
+                        <h2 class="panel-title">Quick Event Overview</h2>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Event Title</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Registrations</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tech Fest 2026 - Day 1</td>
+                                        <td>02 Aug 2026</td>
+                                        <td><span class="badge active">Ongoing</span></td>
+                                        <td>120</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cultural Night</td>
+                                        <td>15 Aug 2026</td>
+                                        <td><span class="badge pending">Upcoming</span></td>
+                                        <td>96</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Startup Pitch Meetup</td>
+                                        <td>10 Jul 2026</td>
+                                        <td><span class="badge live">Completed</span></td>
+                                        <td>46</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- stat cards -->
-            <div class="sec-2">
-                <div class="box-element">
-                    <div>
-                        <p class="head-line header">TOTAL EVENTS</p>
-                        <h1 class="counts">6</h1>
-                        <!-- <p class="sub-line">created by you</p> -->
-                    </div>
-                    <div class="avatar-circle">E</div>
-                </div>
-                <div class="box-element">
-                    <div>
-                        <p class="head-line header">LIVE NOW</p>
-                        <h1 class="counts">1</h1>
-                        <!-- <p class="sub-line">ongoing events</p> -->
-                    </div>
-                    <div class="avatar-circle">L</div>
-                </div>
-                <div class="box-element">
-                    <div>
-                        <p class="head-line header">TOTAL REGISTRATIONS</p>
-                        <h1 class="counts">312</h1>
-                        <!-- <p class="sub-line">across all events</p> -->
-                    </div>
-                    <div class="avatar-circle">R</div>
-                </div>
-                <div class="box-element">
-                    <div>
-                        <p class="head-line header">AVG. FEEDBACK RATING</p>
-                        <h1 class="counts">4.6</h1>
-                        <!-- <p class="sub-line">out of 5</p> -->
-                    </div>
-                    <div class="avatar-circle">F</div>
-                </div>
-            </div>
-
-            <!-- quick tools -->
-            <div class="sec-3">
-                <button class="tool-box">
-                    <div class="avatar-circle">G</div>
-                    <div class="tool-box-data">
-                        <p class="head-line">Event Gallery</p>
-                        <p class="sub-line">Browse and add photos from your events</p>
-                    </div>
-                </button>
-                <button class="tool-box">
-                    <div class="avatar-circle">H</div>
-                    <div class="tool-box-data">
-                        <p class="head-line">Help</p>
-                        <p class="sub-line">Guides, FAQs and support tickets</p>
-                    </div>
-                </button>
-            </div>
-
-            <div class="sec-4">
-                <!-- Create Event panel -->
+            <!-- Standalone Create Event View -->
+            <div id="view-create-event" class="sec-4" style="display: none;">
                 <div class="panel">
                     <h2 class="panel-title">Create New Event</h2>
-                    <div class="form-grid">
-                        <div class="form-field full">
-                            <label>Event Title</label>
-                            <input type="text" placeholder="e.g. Tech Fest 2026">
+                    <form id="create-event-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-grid">
+                            <div class="form-field full">
+                                <label>Event Title</label>
+                                <input type="text" id="event-title-input" placeholder="e.g. Tech Fest 2026" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Category</label>
+                                <select id="event-category-input">
+                                    <option>Technical</option>
+                                    <option>Cultural</option>
+                                    <option>Sports</option>
+                                    <option>Workshop</option>
+                                    <option>Corporate</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label>Venue</label>
+                                <input type="text" id="event-venue-input" placeholder="e.g. Main Auditorium" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Date</label>
+                                <input type="date" id="event-date-input" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Time</label>
+                                <input type="time" id="event-time-input" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Registration Limit</label>
+                                <input type="number" id="event-limit-input" placeholder="e.g. 200" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Ticket Type</label>
+                                <select id="event-ticket-input">
+                                    <option>Free</option>
+                                    <option>Paid</option>
+                                </select>
+                            </div>
+                            <div class="form-field full">
+                                <label>Description</label>
+                                <textarea id="event-desc-input" placeholder="What's this event about?"></textarea>
+                            </div>
+                            <div class="form-field full">
+                                <label>Event Banner</label>
+                                <input type="file" accept="image/*">
+                            </div>
                         </div>
-                        <div class="form-field">
-                            <label>Category</label>
-                            <select>
-                                <option>Technical</option>
-                                <option>Cultural</option>
-                                <option>Sports</option>
-                                <option>Workshop</option>
-                                <option>Corporate</option>
-                            </select>
+                        <div style="margin-top:20px; display:flex; gap:12px;">
+                            <button type="submit" class="btn-primary">Publish Event</button>
+                            <button type="button" class="btn-secondary" onclick="switchView('myEvents')">Cancel</button>
                         </div>
-                        <div class="form-field">
-                            <label>Venue</label>
-                            <input type="text" placeholder="e.g. Main Auditorium">
-                        </div>
-                        <div class="form-field">
-                            <label>Date</label>
-                            <input type="date">
-                        </div>
-                        <div class="form-field">
-                            <label>Time</label>
-                            <input type="time">
-                        </div>
-                        <div class="form-field">
-                            <label>Registration Limit</label>
-                            <input type="number" placeholder="e.g. 200">
-                        </div>
-                        <div class="form-field">
-                            <label>Ticket Type</label>
-                            <select>
-                                <option>Free</option>
-                                <option>Paid</option>
-                            </select>
-                        </div>
-                        <div class="form-field full">
-                            <label>Description</label>
-                            <textarea placeholder="What's this event about?"></textarea>
-                        </div>
-                        <div class="form-field full">
-                            <label>Event Banner</label>
-                            <input type="file" accept="image/*">
-                        </div>
-                    </div>
-                    <div style="margin-top:20px; display:flex; gap:12px;">
-                        <button class="btn-primary">Publish Event</button>
-                        <button class="btn-secondary">Save as Draft</button>
-                    </div>
+                    </form>
                 </div>
+            </div>
 
-                <!-- My Events panel -->
+            <!-- Dynamic Table Container View -->
+            <div id="view-table-container" class="sec-4" style="display: none;">
                 <div class="panel">
-                    <h2 class="panel-title">My Events</h2>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Event</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Registrations</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tech Fest 2026 - Day 1</td>
-                                <td>02 Aug 2026</td>
-                                <td><span class="status-pill status-live">Ongoing</span></td>
-                                <td>120</td>
-                                <td style="display:flex; gap:8px;">
-                                    <button class="btn-secondary">Edit</button>
-                                    <button class="btn-danger">Cancel</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cultural Night</td>
-                                <td>15 Aug 2026</td>
-                                <td><span class="status-pill status-upcoming">Upcoming</span></td>
-                                <td>96</td>
-                                <td style="display:flex; gap:8px;">
-                                    <button class="btn-secondary">Edit</button>
-                                    <button class="btn-danger">Cancel</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Startup Pitch Meetup</td>
-                                <td>10 Jul 2026</td>
-                                <td><span class="status-pill status-ended">Ended</span></td>
-                                <td>46</td>
-                                <td style="display:flex; gap:8px;">
-                                    <button class="btn-secondary">View Report</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-header-flex">
+                        <h2 class="panel-title" id="table-title">My Events</h2>
+                        <button class="btn-primary" id="dynamic-action-btn">
+                            <i class="fa-solid fa-plus"></i> <span id="add-btn-text">Add Item</span>
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table" id="data-table">
+                            <!-- Table header and body will be dynamically injected via JavaScript -->
+                        </table>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
+    <script src="host.js"></script>
 </body>
 
 </html>
