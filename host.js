@@ -1,43 +1,153 @@
-// Sidebar dynamic hover controls
-function expandSidebar() {}
-function collapseSidebar() {}
+// Sidebar Hover Expansion Functions
+function expandSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.classList.add('expanded');
+}
 
-// Track active view state
-let currentActiveView = 'dashboard';
+function collapseSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.classList.remove('expanded');
+}
 
-// Dynamic Mock Dataset for Host Views
-const mockHostData = {
-    myEvents: {
-        title: "My Hosted Events",
-        addLabel: "Create Event",
-        headers: ["Event Title", "Date", "Status", "Registrations", "Actions"],
-        fields: ["Event Title", "Date", "Registrations"],
-        rows: [
-            ["Tech Fest 2026 - Day 1", "02 Aug 2026", "<span class='badge active'>Ongoing</span>", "120", "<button class='btn-secondary'>Edit</button> <button class='btn-danger'>Cancel</button>"],
-            ["Cultural Night", "15 Aug 2026", "<span class='badge pending'>Upcoming</span>", "96", "<button class='btn-secondary'>Edit</button> <button class='btn-danger'>Cancel</button>"],
-            ["Startup Pitch Meetup", "10 Jul 2026", "<span class='badge live'>Completed</span>", "46", "<button class='btn-secondary'>View Report</button>"]
-        ]
+// Host/Coordinator Logout Handler
+function logoutHost(event) {
+    if (event) event.preventDefault();
+    localStorage.removeItem('campusConnectAdminAuth');
+    window.location.href = 'home.html';
+}
+
+// Structured data for host dashboard sections
+const HostData = {
+    createEvent: {
+        title: "Create New Campus Event",
+        content: `
+            <form style="display: flex; flex-direction: column; gap: 15px; max-width: 600px;">
+                <div>
+                    <label style="font-size: 13px; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">Event Title</label>
+                    <input type="text" placeholder="Enter event name" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 14px;">
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 13px; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">Date</label>
+                        <input type="date" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 14px;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 13px; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">Venue / Room</label>
+                        <input type="text" placeholder="e.g. Auditorium Room 102" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 14px;">
+                    </div>
+                </div>
+                <div>
+                    <label style="font-size: 13px; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">Event Description</label>
+                    <textarea rows="4" placeholder="Provide event details..." style="width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 14px;"></textarea>
+                </div>
+                <button type="button" class="btn-primary" style="padding: 10px 20px; background-color: #2563eb; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; width: fit-content;">Publish Event</button>
+            </form>
+        `
     },
-    gallery: {
-        title: "Event Gallery Photos",
-        addLabel: "Upload Photo",
-        headers: ["Photo ID", "Event Name", "Uploaded Date", "Actions"],
-        fields: ["Event Name", "Image URL/Title"],
-        rows: [
-            ["#IMG01", "Tech Fest 2026", "03 Aug 2026", "<button class='btn-danger'>Delete</button>"],
-            ["#IMG02", "Cultural Night 2025", "16 Aug 2025", "<button class='btn-danger'>Delete</button>"]
-        ]
+    myEvents: {
+        title: "My Managed Events",
+        content: `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        <th>Status</th>
+                        <th>Registrations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tech Fest 2026 - Day 1</td>
+                        <td>Sep 10, 2026</td>
+                        <td>Main Auditorium</td>
+                        <td><span class="status-pill status-live">Live</span></td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td>Startup Pitch Meetup</td>
+                        <td>Sep 12, 2026</td>
+                        <td>MBA Block Seminar Hall 3</td>
+                        <td><span class="status-pill status-upcoming">Upcoming</span></td>
+                        <td>85</td>
+                    </tr>
+                </tbody>
+            </table>
+        `
+    },
+    attendance: {
+        title: "Mark Student Attendance",
+        content: `
+            <div style="margin-bottom: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                <div>
+                    <label style="font-size: 13px; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">Select Event</label>
+                    <select style="padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 14px;">
+                        <option>Tech Fest 2026 - Day 1</option>
+                        <option>Annual Fest Rhythm</option>
+                        <option>Bot Wars Championship</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 13px; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">Search Student</label>
+                    <input type="text" placeholder="Search by name or roll no." style="padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 14px; width: 240px;">
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No.</th>
+                        <th>Student Name</th>
+                        <th>Registered Event</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CS2201</td>
+                        <td>Ananya Patra</td>
+                        <td>Tech Fest 2026 - Day 1</td>
+                        <td><span class="status-pill status-present">Present</span></td>
+                        <td><button class="btn-secondary">Undo</button></td>
+                    </tr>
+                    <tr>
+                        <td>CS2214</td>
+                        <td>Rohit Sahoo</td>
+                        <td>Tech Fest 2026 - Day 1</td>
+                        <td><span class="status-pill status-absent">Absent</span></td>
+                        <td><button class="btn-primary">Mark Present</button></td>
+                    </tr>
+                    <tr>
+                        <td>CS2230</td>
+                        <td>Meera Nayak</td>
+                        <td>Tech Fest 2026 - Day 1</td>
+                        <td><span class="status-pill status-absent">Absent</span></td>
+                        <td><button class="btn-primary">Mark Present</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        `
+    },
+    help: {
+        title: "Help Centre & Support",
+        content: `
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 15px;">Need assistance with scanner tools, permissions, or reporting issues during live events? Contact the administrative desk or browse our FAQs below.</p>
+            <ul>
+                <li style="margin-bottom: 10px;"><strong>Q: How do I scan offline student QR passes?</strong><br><span style="color: #64748b;">A: Use the built-in scanner tool on the mobile app version or manual roll-number search above.</span></li>
+                <li><strong>Q: Who should I contact in case of equipment failure at the venue?</strong><br><span style="color: #64748b;">A: Reach out immediately to the technical supervisor at support extension 404.</span></li>
+            </ul>
+        `
     }
 };
 
-// Switch view sections dynamically
+// Switch view logic for Host Dashboard
 function switchView(viewName, element) {
-    currentActiveView = viewName;
     const dashboardView = document.getElementById('view-dashboard');
-    const createEventView = document.getElementById('view-create-event');
-    const tableViewContainer = document.getElementById('view-table-container');
+    const contentContainer = document.getElementById('view-content-container');
+    const contentTitle = document.getElementById('content-title');
+    const contentBody = document.getElementById('content-body');
 
-    // Highlight active link in sidebar
     if (element) {
         document.querySelectorAll('.sidebar-menu a').forEach(link => link.classList.remove('active'));
         element.classList.add('active');
@@ -45,116 +155,18 @@ function switchView(viewName, element) {
 
     if (viewName === 'dashboard') {
         dashboardView.style.display = 'block';
-        createEventView.style.display = 'none';
-        tableViewContainer.style.display = 'none';
-    } else if (viewName === 'createEvent') {
-        dashboardView.style.display = 'none';
-        createEventView.style.display = 'block';
-        tableViewContainer.style.display = 'none';
+        contentContainer.style.display = 'none';
     } else {
         dashboardView.style.display = 'none';
-        createEventView.style.display = 'none';
-        tableViewContainer.style.display = 'block';
-        renderTable(viewName);
-    }
-}
+        contentContainer.style.display = 'block';
 
-// Render dynamic tables for Host Views
-function renderTable(viewName) {
-    const tableTitle = document.getElementById('table-title');
-    const dataTable = document.getElementById('data-table');
-    const dynamicActionBtn = document.getElementById('dynamic-action-btn');
-    const addBtnText = document.getElementById('add-btn-text');
-    const dataset = mockHostData[viewName];
-
-    if (dataset) {
-        tableTitle.innerText = dataset.title;
-        
-        if (dataset.addLabel) {
-            dynamicActionBtn.style.display = 'flex';
-            addBtnText.innerText = dataset.addLabel;
-            
-            dynamicActionBtn.onclick = function() {
-                if (viewName === 'myEvents') {
-                    switchView('createEvent');
-                } else {
-                    addNewRow(viewName);
-                }
-            };
+        const data = HostData[viewName];
+        if (data) {
+            contentTitle.innerText = data.title;
+            contentBody.innerHTML = data.content;
         } else {
-            dynamicActionBtn.style.display = 'none';
+            contentTitle.innerText = "View Not Found";
+            contentBody.innerHTML = "<p>The requested section could not be loaded.</p>";
         }
-
-        let tableHTML = `<thead><tr>`;
-        dataset.headers.forEach(header => {
-            tableHTML += `<th>${header}</th>`;
-        });
-        tableHTML += `</tr></thead><tbody>`;
-
-        dataset.rows.forEach(row => {
-            tableHTML += `<tr>`;
-            row.forEach(cell => {
-                tableHTML += `<td>${cell}</td>`;
-            });
-            tableHTML += `</tr>`;
-        });
-        tableHTML += `</tbody>`;
-
-        dataTable.innerHTML = tableHTML;
     }
-}
-
-// Interactively add a row using prompt input
-function addNewRow(viewName) {
-    const dataset = mockHostData[viewName];
-    if (!dataset || !dataset.fields.length) return;
-
-    const newValues = [];
-    for (let i = 0; i < dataset.fields.length; i++) {
-        const inputVal = prompt(`Enter ${dataset.fields[i]}:`);
-        if (inputVal === null) return;
-        newValues.push(inputVal.trim());
-    }
-
-    let newRowData = [];
-    if (viewName === 'gallery') {
-        const id = `#IMG0${dataset.rows.length + 1}`;
-        newRowData = [id, newValues[0], new Date().toLocaleDateString(), "<button class='btn-danger'>Delete</button>"];
-    }
-
-    dataset.rows.push(newRowData);
-    renderTable(viewName);
-}
-
-// Handle Form Submission for Create Event Panel
-function handleFormSubmit(event) {
-    event.preventDefault();
-
-    const title = document.getElementById('event-title-input').value;
-    const date = document.getElementById('event-date-input').value;
-
-    if (!title || !date) return;
-
-    // Add entry into myEvents dataset
-    mockHostData.myEvents.rows.push([
-        title,
-        date,
-        "<span class='badge pending'>Upcoming</span>",
-        "0",
-        "<button class='btn-secondary'>Edit</button> <button class='btn-danger'>Cancel</button>"
-    ]);
-
-    // Clear Form Fields
-    document.getElementById('create-event-form').reset();
-
-    // Redirect to My Events view
-    switchView('myEvents');
-}
-
-// Logout Action
-function logoutHost(event) {
-    event.preventDefault();
-    localStorage.removeItem('campusConnectHostAuth');
-    localStorage.removeItem('userRole');
-    window.location.href = 'home.html';
 }

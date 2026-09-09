@@ -82,7 +82,9 @@ nav {
     box-shadow: 0 5px 10px  #5ebffb;
 
 }
-
+.login-btn a{
+    text-decoration: none;
+}
 /* hero section */
 .sec-2 {
     height: 400px;
