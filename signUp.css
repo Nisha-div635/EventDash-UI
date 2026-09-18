@@ -11,11 +11,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-y: auto;
     position: relative;
+    padding: 40px 20px;
 }
 
-/* Background Floating Blob Animation (Identical to Register Page) */
+/* Background Floating Blob Animation */
 .bg-animation {
     position: fixed;
     width: 100%;
@@ -58,22 +59,22 @@ body {
     100% { transform: translate(-30px, -40px) scale(0.9); }
 }
 
-.login-wrapper {
+.signup-wrapper {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 460px;
-    padding: 20px;
+    max-width: 480px;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 /* Glassmorphism & Floating Card Animation */
-.login-container {
+.signup-container {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
-    padding: 40px;
+    padding: 35px 40px;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -95,8 +96,8 @@ body {
     }
 }
 
-.login-header {
-    margin-bottom: 25px;
+.signup-header {
+    margin-bottom: 22px;
     text-align: center;
 }
 
@@ -110,7 +111,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 /* Text Slide & Fade Animations */
@@ -143,14 +144,17 @@ body {
 
 /* Staggered Form Groups Animation */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     opacity: 0;
     animation: fadeInStaggered 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.animate-group-1 { animation-delay: 0.4s; }
-.animate-group-2 { animation-delay: 0.5s; }
-.animate-group-3 { animation-delay: 0.6s; }
+.animate-group-1 { animation-delay: 0.35s; }
+.animate-group-2 { animation-delay: 0.42s; }
+.animate-group-3 { animation-delay: 0.49s; }
+.animate-group-4 { animation-delay: 0.56s; }
+.animate-group-5 { animation-delay: 0.63s; }
+.animate-group-6 { animation-delay: 0.70s; }
 
 @keyframes fadeInStaggered {
     from {
@@ -165,16 +169,16 @@ body {
 
 .form-group label {
     display: block;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #334155;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
 }
 
 .form-group select,
 .form-group input {
     width: 100%;
-    padding: 12px 14px;
+    padding: 11px 14px;
     border: 2px solid #cbd5e1;
     border-radius: 10px;
     font-size: 14px;
@@ -227,30 +231,59 @@ body {
     color: #6366f1;
 }
 
-/* Login Button Styles */
-.login-submit-btn {
+/* OTP Layout Group */
+.otp-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.otp-container input {
+    flex: 1;
+}
+
+.resend-otp-btn {
+    padding: 11px 16px;
+    background: #e0e7ff;
+    color: #4f46e5;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.resend-otp-btn:hover {
+    background: #c7d2fe;
+}
+
+/* Signup Button Styles */
+.signup-submit-btn {
     width: 100%;
-    padding: 14px;
+    padding: 13px;
     background: #6366f1;
     color: #fff;
     border: none;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
     opacity: 0;
-    animation: fadeInStaggered 0.6s 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInStaggered 0.6s 0.78s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    margin-top: 5px;
 }
 
-.login-submit-btn:hover {
+.signup-submit-btn:hover {
     background: #4f46e5;
     box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
     transform: translateY(-2px);
 }
 
-.login-submit-btn:active {
+.signup-submit-btn:active {
     transform: scale(0.97) translateY(0);
 }
 
@@ -258,7 +291,7 @@ body {
     color: #ef4444;
     font-size: 13px;
     font-weight: 500;
-    margin-top: 12px;
+    margin-top: 10px;
     text-align: center;
     display: none;
     animation: shake 0.4s ease-in-out;

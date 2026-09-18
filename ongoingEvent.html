@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ongoing Events | CampusConnect</title>
+    <link rel="stylesheet" href="ongoingEvent.css">
+    <!-- Bootstrap Icons for UI elements -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!-- Background Animated Gradient Blobs -->
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <!-- Header Section -->
+        <header class="dashboard-header animate-header">
+            <div class="header-text">
+                <span class="badge"><i class="bi bi-broadcast"></i> Live Now</span>
+                <h1>Ongoing Events</h1>
+                <p>Explore and join events happening right at this moment across the campus.</p>
+            </div>
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search live events..." onkeyup="filterEvents()">
+                </div>
+                <div class="filter-dropdown">
+                    <select id="categoryFilter" onchange="filterEvents()">
+                        <option value="all">All Categories</option>
+                        <option value="tech">Technical</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="workshop">Workshop</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Events Grid -->
+        <main class="events-grid">
+            <!-- Event Card 1 -->
+            <div class="event-card animate-card" data-category="tech">
+                <div class="card-media">
+                    <span class="live-badge"><span class="pulse-dot"></span> LIVE</span>
+                    <span class="category-tag tech">Technical</span>
+                    <div class="card-timer"><i class="bi bi-clock"></i> Ends in 45m</div>
+                </div>
+                <div class="card-content">
+                    <h3>Hackathon 2026: Code Sprint</h3>
+                    <p class="event-host"><i class="bi bi-person-badge"></i> Hosted by: Computer Science Dept</p>
+                    <p class="event-desc">Students are building full-stack applications in real-time under tight deadlines.</p>
+                    
+                    <!-- Progress Bar for Ongoing Event -->
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>75% Completed</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="location"><i class="bi bi-geo-alt-fill"></i> Lab 3, Tech Block</span>
+                        <a href="register-event.html" class="join-btn">Join Live</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card animate-card" data-category="cultural">
+                <div class="card-media">
+                    <span class="live-badge"><span class="pulse-dot"></span> LIVE</span>
+                    <span class="category-tag cultural">Cultural</span>
+                    <div class="card-timer"><i class="bi bi-clock"></i> Ends in 1h 20m</div>
+                </div>
+                <div class="card-content">
+                    <h3>Inter-Department Dance Battle</h3>
+                    <p class="event-host"><i class="bi bi-person-badge"></i> Hosted by: Cultural Club</p>
+                    <p class="event-desc">Groove to the rhythm as departments face off in an electrifying dance showdown.</p>
+                    
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>40% Completed</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="location"><i class="bi bi-geo-alt-fill"></i> Main Auditorium</span>
+                        <a href="register-event.html" class="join-btn">Join Live</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card animate-card" data-category="workshop">
+                <div class="card-media">
+                    <span class="live-badge"><span class="pulse-dot"></span> LIVE</span>
+                    <span class="category-tag workshop">Workshop</span>
+                    <div class="card-timer"><i class="bi bi-clock"></i> Ends in 30m</div>
+                </div>
+                <div class="card-content">
+                    <h3>AI & Machine Learning Masterclass</h3>
+                    <p class="event-host"><i class="bi bi-person-badge"></i> Hosted by: AI Research Cell</p>
+                    <p class="event-desc">Hands-on live coding session on training foundational neural network layers.</p>
+                    
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>85% Completed</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="location"><i class="bi bi-geo-alt-fill"></i> Seminar Hall 2</span>
+                        <a href="register-event.html" class="join-btn">Join Live</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="ongoingEvent.js"></script>
+</body>
+</html>
