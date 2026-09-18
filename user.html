@@ -9,8 +9,7 @@
     <title>User Dashboard | CampusConnect</title>
 
     <link rel="stylesheet" href="user.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- QR Scanner Library -->
     <script src="https://unpkg.com/html5-qrcode" defer></script>
@@ -63,10 +62,7 @@
 
         <!-- ================= SIDEBAR ================= -->
 
-        <aside class="sidebar"
-            id="sidebar"
-            onmouseenter="expandSidebar()"
-            onmouseleave="collapseSidebar()">
+        <aside class="sidebar" id="sidebar" onmouseenter="expandSidebar()" onmouseleave="collapseSidebar()">
 
             <div>
 
@@ -79,80 +75,63 @@
                     <ul>
 
                         <li>
-                            <a href="#"
-                                class="nav-link active"
-                                onclick="switchView('dashboard', this)">
+                            <a href="#" class="nav-link active" onclick="switchView('dashboard', this)">
                                 <i class="bi bi-grid"></i>
                                 <span class="menu-text">Dashboard</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"
-                                class="nav-link"
-                                onclick="switchView('myEvents', this)">
+                            <a href="#" class="nav-link" onclick="switchView('myEvents', this)">
                                 <i class="bi bi-calendar-check"></i>
                                 <span class="menu-text">My Events</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"
-                                class="nav-link"
-                                onclick="switchView('upcoming', this)">
+                            <a href="#" class="nav-link" onclick="switchView('upcoming', this)">
                                 <i class="bi bi-calendar-plus"></i>
                                 <span class="menu-text">Upcoming Events</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"
-                                class="nav-link"
-                                onclick="switchView('ongoing', this)">
+                            <a href="#" class="nav-link" onclick="switchView('ongoing', this)">
                                 <i class="bi bi-broadcast"></i>
                                 <span class="menu-text">Ongoing Events</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"
-                                class="nav-link"
-                                onclick="switchView('register', this)">
+                            <a href="registerEvent.html" class="nav-link" onclick="switchView('register', this)">
                                 <i class="bi bi-pencil-square"></i>
                                 <span class="menu-text">Register Event</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"
-                                class="nav-link"
-                                onclick="switchView('attendance', this)">
+                            <a href="#" class="nav-link" onclick="switchView('attendance', this)">
                                 <i class="bi bi-qr-code-scan"></i>
                                 <span class="menu-text">Scan Attendance</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"
-                                class="nav-link"
-                                onclick="switchView('feedback', this)">
+                            <a href="#" class="nav-link" onclick="switchView('feedback', this)">
                                 <i class="bi bi-star"></i>
                                 <span class="menu-text">Give Feedback</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="gallery.html"
-                                class="nav-link">
+                            <a href="gallery.html" class="nav-link">
                                 <i class="bi bi-images"></i>
                                 <span class="menu-text">Gallery</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#"
-                                class="nav-link"
-                                onclick="switchView('help', this)">
+                            <a href="#" class="nav-link" onclick="switchView('help', this)">
                                 <i class="bi bi-question-circle"></i>
                                 <span class="menu-text">Help Centre</span>
                             </a>
@@ -216,8 +195,7 @@
 
                     <div class="sec-2">
 
-                        <div class="box-element"
-                            onclick="switchView('myEvents')">
+                        <div class="box-element" onclick="switchView('myEvents')">
 
                             <div>
 
@@ -225,8 +203,7 @@
                                     EVENTS REGISTERED
                                 </p>
 
-                                <h1 class="counts"
-                                    id="registeredCount">
+                                <h1 class="counts" id="registeredCount">
                                     5
                                 </h1>
 
@@ -243,8 +220,7 @@
                         </div>
 
 
-                        <div class="box-element"
-                            onclick="switchView('myEvents')">
+                        <div class="box-element" onclick="switchView('myEvents')">
 
                             <div>
 
@@ -252,8 +228,7 @@
                                     PAST EVENTS
                                 </p>
 
-                                <h1 class="counts"
-                                    id="pastCount">
+                                <h1 class="counts" id="pastCount">
                                     3
                                 </h1>
 
@@ -270,8 +245,7 @@
                         </div>
 
 
-                        <div class="box-element"
-                            onclick="switchView('upcoming')">
+                        <div class="box-element" onclick="switchView('upcoming')">
 
                             <div>
 
@@ -279,8 +253,7 @@
                                     UPCOMING EVENTS
                                 </p>
 
-                                <h1 class="counts"
-                                    id="upcomingCount">
+                                <h1 class="counts" id="upcomingCount">
                                     2
                                 </h1>
 
@@ -297,8 +270,7 @@
                         </div>
 
 
-                        <div class="box-element"
-                            onclick="switchView('ongoing')">
+                        <div class="box-element" onclick="switchView('ongoing')">
 
                             <div>
 
@@ -306,8 +278,7 @@
                                     ONGOING EVENTS
                                 </p>
 
-                                <h1 class="counts"
-                                    id="ongoingCount">
+                                <h1 class="counts" id="ongoingCount">
                                     1
                                 </h1>
 
@@ -338,8 +309,7 @@
 
                             <div class="scroll-img-card">
 
-                                <img src="https://picsum.photos/300/180?random=20"
-                                    alt="Tech Fest">
+                                <img src="https://picsum.photos/300/180?random=20" alt="Tech Fest">
 
                                 <p>
                                     Tech Fest 2026
@@ -350,8 +320,7 @@
 
                             <div class="scroll-img-card">
 
-                                <img src="https://picsum.photos/300/180?random=21"
-                                    alt="Cultural Event">
+                                <img src="https://picsum.photos/300/180?random=21" alt="Cultural Event">
 
                                 <p>
                                     Cultural Night
@@ -362,8 +331,7 @@
 
                             <div class="scroll-img-card">
 
-                                <img src="https://picsum.photos/300/180?random=22"
-                                    alt="Startup Event">
+                                <img src="https://picsum.photos/300/180?random=22" alt="Startup Event">
 
                                 <p>
                                     Startup Meetup
@@ -374,8 +342,7 @@
 
                             <div class="scroll-img-card">
 
-                                <img src="https://picsum.photos/300/180?random=23"
-                                    alt="Award Ceremony">
+                                <img src="https://picsum.photos/300/180?random=23" alt="Award Ceremony">
 
                                 <p>
                                     Award Ceremony
@@ -392,8 +359,7 @@
 
                     <div class="sec-3">
 
-                        <button class="tool-box"
-                            onclick="switchView('register')">
+                        <button class="tool-box" onclick="switchView('register')">
 
                             <div class="icon-circle">
                                 <i class="bi bi-pencil-square"></i>
@@ -414,8 +380,7 @@
                         </button>
 
 
-                        <button class="tool-box"
-                            onclick="switchView('attendance')">
+                        <button class="tool-box" onclick="switchView('attendance')">
 
                             <div class="icon-circle">
                                 <i class="bi bi-qr-code-scan"></i>
@@ -436,8 +401,7 @@
                         </button>
 
 
-                        <button class="tool-box"
-                            onclick="switchView('feedback')">
+                        <button class="tool-box" onclick="switchView('feedback')">
 
                             <div class="icon-circle">
                                 <i class="bi bi-star"></i>
@@ -458,8 +422,7 @@
                         </button>
 
 
-                        <button class="tool-box"
-                            onclick="window.location.href='gallery.html'">
+                        <button class="tool-box" onclick="window.location.href='gallery.html'">
 
                             <div class="icon-circle">
                                 <i class="bi bi-images"></i>
@@ -494,8 +457,7 @@
                                     Ongoing Events
                                 </h2>
 
-                                <button class="link-btn"
-                                    onclick="switchView('ongoing')">
+                                <button class="link-btn" onclick="switchView('ongoing')">
                                     View All
                                 </button>
 
@@ -506,8 +468,7 @@
 
                                 <div class="event-image">
 
-                                    <img src="https://picsum.photos/300/180?random=31"
-                                        alt="Tech Fest">
+                                    <img src="https://picsum.photos/300/180?random=31" alt="Tech Fest">
 
                                 </div>
 
@@ -531,8 +492,7 @@
                                         10:00 AM - 6:00 PM
                                     </p>
 
-                                    <button class="btn-primary"
-                                        onclick="switchView('attendance')">
+                                    <button class="btn-primary" onclick="switchView('attendance')">
                                         Scan Attendance
                                     </button>
 
@@ -551,8 +511,7 @@
                                     Upcoming Events
                                 </h2>
 
-                                <button class="link-btn"
-                                    onclick="switchView('upcoming')">
+                                <button class="link-btn" onclick="switchView('upcoming')">
                                     View All
                                 </button>
 
@@ -582,8 +541,7 @@
 
                                     </div>
 
-                                    <button class="btn-primary small-btn"
-                                        onclick="openRegistration('Cultural Night')">
+                                    <button class="btn-primary small-btn" onclick="openRegistration('Cultural Night')">
                                         Register
                                     </button>
 
@@ -621,4 +579,4 @@
                             </div>
 
                         </div>
-```
+                        ```

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events | CampusConnect</title>
+    <link rel="stylesheet" href="upcommingEvent.css">
+    <!-- Bootstrap Icons for UI elements -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <!-- Background Soft Gradient Blob Animation -->
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="dashboard-wrapper">
+        <!-- Header Section -->
+        <header class="dashboard-header animate-header">
+            <div class="header-text">
+                <span class="badge"><i class="bi bi-calendar-event"></i> Coming Soon</span>
+                <h1>Upcoming Events</h1>
+                <p>Browse through scheduled events and secure your spot ahead of time.</p>
+            </div>
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search upcoming events..."
+                        onkeyup="filterEvents()">
+                </div>
+                <div class="filter-dropdown">
+                    <select id="categoryFilter" onchange="filterEvents()">
+                        <option value="all">All Categories</option>
+                        <option value="tech">Technical</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="workshop">Workshop</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Events Grid -->
+        <main class="events-grid">
+            <!-- Event Card 1 -->
+            <div class="event-card animate-card" data-category="tech">
+                <div class="card-media">
+                    <span class="upcoming-badge"><i class="bi bi-stopwatch"></i> Starts in 2 Days</span>
+                    <span class="category-tag tech">Technical</span>
+                    <div class="card-date"><i class="bi bi-calendar3"></i> Oct 24, 2026</div>
+                </div>
+                <div class="card-content">
+                    <h3>National Web Development Symposium</h3>
+                    <p class="event-host"><i class="bi bi-person-badge"></i> Hosted by: IT Department</p>
+                    <p class="event-desc">A deep dive into modern microservices architecture and cloud-native
+                        application deployment.</p>
+
+                    <!-- Schedule Info Component -->
+                    <div class="schedule-container">
+                        <div class="schedule-item">
+                            <i class="bi bi-clock"></i>
+                            <span>10:00 AM - 04:00 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <i class="bi bi-people"></i>
+                            <span>Slots: 45 / 120 filled</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="location"><i class="bi bi-geo-alt-fill"></i> Main Auditorium</span>
+                        <a href="register-event.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card animate-card" data-category="cultural">
+                <div class="card-media">
+                    <span class="upcoming-badge"><i class="bi bi-stopwatch"></i> Starts in 5 Days</span>
+                    <span class="category-tag cultural">Cultural</span>
+                    <div class="card-date"><i class="bi bi-calendar3"></i> Oct 27, 2026</div>
+                </div>
+                <div class="card-content">
+                    <h3>Annual Music Fest: Melodies 2026</h3>
+                    <p class="event-host"><i class="bi bi-person-badge"></i> Hosted by: Cultural Society</p>
+                    <p class="event-desc">Experience an unforgettable evening of live band performances, solo singing,
+                        and acoustic jams.</p>
+
+                    <div class="schedule-container">
+                        <div class="schedule-item">
+                            <i class="bi bi-clock"></i>
+                            <span>05:30 PM - 09:30 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <i class="bi bi-people"></i>
+                            <span>Slots: 180 / 300 filled</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="location"><i class="bi bi-geo-alt-fill"></i> Open Air Theatre</span>
+                        <a href="register-event.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card animate-card" data-category="workshop">
+                <div class="card-media">
+                    <span class="upcoming-badge"><i class="bi bi-stopwatch"></i> Starts next week</span>
+                    <span class="category-tag workshop">Workshop</span>
+                    <div class="card-date"><i class="bi bi-calendar3"></i> Nov 02, 2026</div>
+                </div>
+                <div class="card-content">
+                    <h3>Cyber Security & Ethical Hacking Bootcamp</h3>
+                    <p class="event-host"><i class="bi bi-person-badge"></i> Hosted by: Cyber Cell</p>
+                    <p class="event-desc">Learn hands-on vulnerability assessment, penetration testing fundamentals, and
+                        defense strategies.</p>
+
+                    <div class="schedule-container">
+                        <div class="schedule-item">
+                            <i class="bi bi-clock"></i>
+                            <span>02:00 PM - 06:00 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <i class="bi bi-people"></i>
+                            <span>Slots: 60 / 80 filled</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="location"><i class="bi bi-geo-alt-fill"></i> Computer Lab 1</span>
+                        <a href="register-event.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="upcommingEvent.js"></script>
+</body>
+
+</html>
