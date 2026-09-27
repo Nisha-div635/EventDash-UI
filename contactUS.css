@@ -11,45 +11,72 @@ nav {
     height: 50px;
     width: 100%;
     color: hsl(0, 8%, 91%);
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
     background-color: rgb(8, 8, 8);
     display: flex;
-    gap: 40px;
     align-items: center;
-    padding: 0 20px;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-
 
 .logo-name {
     background: linear-gradient(to right, #7a3cff, #1dc8ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-family: Impact, sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.5px;
     margin: 0;
 }
 
 .nav-links {
     display: flex;
-    gap: 100px;
-    margin-left: 40px;
+    gap: 30px;
     font-family: sans-serif;
-    flex: 1;
+    align-items: center;
 }
 
 .nav-links a {
     text-decoration: none;
     color: hsl(0, 9%, 96%);
     font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #38bdf8;
 }
 
 .login-btn {
-    height: 30px;
-    width: 80px;
+    height: 32px;
+    padding: 0 18px;
     color: white;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 700;
     background: linear-gradient(to right, #7A65FF 20%, #38B2FE 100%);
     border: none;
+    cursor: pointer;
+    margin-right: 45px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-btn a {
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(122, 101, 255, 0.3);
 }
 
 .contact-section {
