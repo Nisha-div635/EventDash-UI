@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Centre | CampusConnect</title>
+    <link rel="stylesheet" href="help.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <h4 class="logo-name">CAMPUSCONNECT</h4>
+        </div>
+
+        <div class="nav-links">
+            <a href="home.html">HOME</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="contactUS.html">CONTACT US</a>
+            <a href="help.html" class="active">HELPCENTER</a>
+        </div>
+
+        <button class="login-btn"><a href="login.html">LOGIN</a></button>
+    </nav>
+
+    <!-- HERO SEARCH SECTION -->
+    <header class="help-hero">
+        <div class="hero-content">
+            <span class="badge"><i class="bi bi-life-preserver"></i> Support &amp; Knowledge Base</span>
+            <h1 class="hero-title">How can we <span class="d1">help you</span> today?</h1>
+            <p class="hero-subtitle">
+                Search guides, role tutorials, QR attendance FAQs, and event support resources.
+            </p>
+
+            <div class="search-box">
+                <i class="bi bi-search"></i>
+                <input type="text" id="helpSearchInput" placeholder="Search by topic, e.g. QR code, feedback, register, host..." oninput="filterHelpTopics()">
+            </div>
+        </div>
+    </header>
+
+    <!-- ROLE & TOPIC CARDS -->
+    <main class="help-container">
+
+        <section class="section-block">
+            <div class="section-header">
+                <h2>Browse by <span class="d1">Role &amp; Category</span></h2>
+                <p>Choose your area to get fast answers tailored to your permissions.</p>
+            </div>
+
+            <div class="category-grid">
+
+                <div class="category-card" onclick="scrollToSection('faq-student')">
+                    <div class="card-icon"><i class="bi bi-person-badge"></i></div>
+                    <h3>Students &amp; Attendees</h3>
+                    <p>Event registrations, viewing ongoing events, student QR pass display, and submitting event feedback.</p>
+                    <span class="card-link">View Student FAQs &rarr;</span>
+                </div>
+
+                <div class="category-card" onclick="scrollToSection('faq-host')">
+                    <div class="card-icon"><i class="bi bi-calendar-plus"></i></div>
+                    <h3>Event Hosts</h3>
+                    <p>Publishing campus events, venue scheduling, and scanning student QR passes using camera scanner.</p>
+                    <span class="card-link">View Host Guides &rarr;</span>
+                </div>
+
+                <div class="category-card" onclick="scrollToSection('faq-coord')">
+                    <div class="card-icon"><i class="bi bi-shield-check"></i></div>
+                    <h3>Coordinators</h3>
+                    <p>Monitoring event activities, scanning digital passes, verifying attendance, and managing photo gallery.</p>
+                    <span class="card-link">View Coordinator FAQs &rarr;</span>
+                </div>
+
+                <div class="category-card" onclick="scrollToSection('faq-account')">
+                    <div class="card-icon"><i class="bi bi-key"></i></div>
+                    <h3>Accounts &amp; Access</h3>
+                    <p>Role-based login credentials, authentication info, profile management, and dashboard navigation.</p>
+                    <span class="card-link">View Account Info &rarr;</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FAQ ACCORDION -->
+        <section class="section-block">
+            <div class="section-header">
+                <h2>Frequently Asked <span class="d1">Questions</span></h2>
+                <p>Quick answers to common questions about CampusConnect features.</p>
+            </div>
+
+            <div class="faq-container" id="faqList">
+
+                <!-- Student FAQs -->
+                <div class="faq-item" id="faq-student">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="bi bi-qr-code"></i> How do I mark my attendance at an event?</span>
+                        <i class="bi bi-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Log in to your <strong>User Dashboard</strong> and click <strong>Attendance QR</strong> in the sidebar. Select your registered event to display your unique <strong>Student Dummy QR Pass</strong>. Present this screen to the Event Host or Coordinator at the venue, who will scan it with their camera scanner to mark you as <strong>Present</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="bi bi-star"></i> How do I provide feedback for an event?</span>
+                        <i class="bi bi-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Once an event you participated in is completed, open your <strong>User Dashboard</strong> and click <strong>Give Feedback</strong>. Select the completed event from the dropdown, choose your rating from 1 to 5 stars, pick a category (e.g., Organization, Venue, Content), and share your comments. Your submitted review will appear in your <strong>My Feedback</strong> history table.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="bi bi-pencil-square"></i> How can I register for an upcoming event?</span>
+                        <i class="bi bi-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            From the User Dashboard, click <strong>Register Event</strong> or click <strong>Register</strong> next to any event under Upcoming Events. Fill in your student information and department, then submit. The event will immediately appear in your <strong>My Registered Events</strong> list.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Host FAQs -->
+                <div class="faq-item" id="faq-host">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="bi bi-camera"></i> How do Hosts and Coordinators scan QR passes?</span>
+                        <i class="bi bi-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Hosts and Coordinators can open <strong>Scan Attendance</strong> (or <strong>Students / Attendance</strong>) from their respective dashboards. Click <strong>Start Camera</strong> to activate the scanner, allow browser camera permissions, and point the camera at the student's Dummy QR Pass. The system verifies the student and marks them present in real time.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="bi bi-plus-circle"></i> How can a Host publish a new campus event?</span>
+                        <i class="bi bi-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            Log in with Host credentials and click <strong>Create Event</strong> in the sidebar. Fill in the event title, date, venue/room, and description, then click <strong>Publish Event</strong>. Your event will be listed for students to browse and register.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Coordinator FAQs -->
+                <div class="faq-item" id="faq-coord">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="bi bi-images"></i> Who has permission to upload photos to the gallery?</span>
+                        <i class="bi bi-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            To maintain content quality, photo uploads are restricted to authorized <strong>Host</strong> and <strong>Coordinator</strong> accounts. Students can browse all event photos in the public Event Gallery.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Account FAQs -->
+                <div class="faq-item" id="faq-account">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="bi bi-shield-lock"></i> What are the demo login credentials for CampusConnect?</span>
+                        <i class="bi bi-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>
+                            CampusConnect includes four built-in demo roles for testing:<br>
+                            &bull; <strong>Admin:</strong> admin / admin123<br>
+                            &bull; <strong>Coordinator:</strong> coord / coord123<br>
+                            &bull; <strong>Host:</strong> host / host123<br>
+                            &bull; <strong>Student / User:</strong> user / user123
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT CTA SECTION -->
+        <section class="help-cta-card">
+            <div class="cta-text">
+                <h3>Still need assistance?</h3>
+                <p>Our administrative desk and support team are available to assist with event hosting, registration, or platform queries.</p>
+            </div>
+            <a href="contactUS.html" class="cta-btn">
+                <i class="bi bi-envelope-fill"></i> Contact Support
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        &copy; 2025-2026 CampusConnect. All rights reserved.
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isOpen = item.classList.contains("open");
+
+            document.querySelectorAll(".faq-item").forEach(el => el.classList.remove("open"));
+
+            if (!isOpen) {
+                item.classList.add("open");
+            }
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.classList.add("open");
+            }
+        }
+
+        function filterHelpTopics() {
+            const query = document.getElementById("helpSearchInput").value.toLowerCase().trim();
+            const items = document.querySelectorAll(".faq-item");
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (!query || text.includes(query)) {
+                    item.style.display = "block";
+                    if (query) item.classList.add("open");
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
