@@ -8,7 +8,9 @@
     <title>User Dashboard | CampusConnect</title>
 
     <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="theme.js"></script>
 </head>
 
 <body>
@@ -30,27 +32,32 @@
                 <a href="#">Contact Us</a>
             </nav>
 
-            <div class="user-dropdown-container">
-
-                <button class="user-btn">
-                    <div class="avatar-circle" id="navAvatar">U</div>
-
-                    <span class="btn-text" id="navUserName">
-                        User
-                    </span>
-
-                    <i class="bi bi-chevron-down dropdown-arrow"></i>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="navbar-theme-toggle" type="button" title="Toggle Light/Dark Mode" aria-label="Toggle theme">
+                    <i class="bi bi-moon-stars-fill theme-toggle-icon"></i>
                 </button>
+                <div class="user-dropdown-container">
 
-                <div class="user-dropdown-menu">
+                    <button class="user-btn">
+                        <div class="avatar-circle" id="navAvatar">U</div>
 
-                    <a href="#" onclick="logoutUser(event)">
-                        <i class="bi bi-box-arrow-right"></i>
-                        Logout
-                    </a>
+                        <span class="btn-text" id="navUserName">
+                            User
+                        </span>
+
+                        <i class="bi bi-chevron-down dropdown-arrow"></i>
+                    </button>
+
+                    <div class="user-dropdown-menu">
+
+                        <a href="#" onclick="logoutUser(event)">
+                            <i class="bi bi-box-arrow-right"></i>
+                            Logout
+                        </a>
+
+                    </div>
 
                 </div>
-
             </div>
 
         </header>

@@ -71,7 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 function handleLoginRedirect() {
-        // Set admin session state when clicking login/entering dashboard
-        localStorage.setItem('campusConnectAdminAuth', 'true');
-        window.location.href = 'index.html'; // Or your dashboard file name
-    }
+    window.location.href = 'login.html';
+}
+
+// Ensure all "Create Your Event" buttons redirect to login page
+document.addEventListener('DOMContentLoaded', () => {
+    const createEventBtns = document.querySelectorAll('.hero-btn');
+    createEventBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
+    });
+});
