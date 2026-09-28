@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | CampusConnect</title>
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="theme.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -37,14 +39,19 @@
                     Us</a>
             </nav>
 
-            <div class="admin-dropdown-container">
-                <button class="admin-btn">
-                    <div class="avatar-circle">A</div>
-                    <span class="btn-text">Admin</span>
-                    <i class="bi bi-chevron-down dropdown-arrow"></i>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="navbar-theme-toggle" type="button" title="Toggle Light/Dark Mode" aria-label="Toggle theme">
+                    <i class="bi bi-moon-stars-fill theme-toggle-icon"></i>
                 </button>
-                <div class="admin-dropdown-menu">
-                    <a href="#" onclick="logoutAdmin(event)"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                <div class="admin-dropdown-container">
+                    <button class="admin-btn">
+                        <div class="avatar-circle">A</div>
+                        <span class="btn-text">Admin</span>
+                        <i class="bi bi-chevron-down dropdown-arrow"></i>
+                    </button>
+                    <div class="admin-dropdown-menu">
+                        <a href="#" onclick="logoutAdmin(event)"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    </div>
                 </div>
             </div>
         </header>

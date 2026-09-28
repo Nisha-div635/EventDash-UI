@@ -1,0 +1,613 @@
+/* ==========================================================================
+   CampusConnect - Unified Light / Dark Theme Stylesheet
+   Supports all 13 platform pages seamlessly via [data-theme="dark"]
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Theme Transition & Floating / Navbar Toggle UI
+   -------------------------------------------------------------------------- */
+body,
+nav,
+header,
+aside,
+main,
+section,
+.sidebar,
+.main-content,
+.box-element,
+.table-card,
+.dashboard-panel,
+.event-card,
+.d3,
+.gallery-card,
+.stat-box,
+.stats-container,
+.review-box,
+.login-container,
+.signup-container,
+.register-container,
+.contact-form-card,
+.faq-item,
+table,
+th,
+td,
+input,
+select,
+textarea {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Floating Theme Switcher Button */
+.floating-theme-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.3s ease, color 0.3s ease;
+}
+
+html:not([data-theme="dark"]) .floating-theme-btn {
+    background: #0f172a;
+    color: #f59e0b; /* Golden moon */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+html[data-theme="dark"] .floating-theme-btn {
+    background: #f8fafc;
+    color: #d97706; /* Golden warm sun */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 24px rgba(245, 158, 11, 0.4);
+}
+
+.floating-theme-btn:hover {
+    transform: translateY(-3px) scale(1.08) rotate(12deg);
+}
+
+.floating-theme-btn:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* In-Navbar Theme Toggle Button */
+.navbar-theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #f8fafc;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.navbar-theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #38bdf8;
+    transform: scale(1.08);
+}
+
+html[data-theme="dark"] .navbar-theme-toggle {
+    background: rgba(255, 255, 255, 0.15);
+    color: #f59e0b;
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   2. Dark Mode Core Layout & Global Typography
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] body {
+    background-color: #0b0f19 !important;
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] p {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .heading {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .subheading {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] #head-line {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] #sub-line {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] hr {
+    border-color: #1e293b !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Dark Mode Form Inputs & Controls
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="password"],
+[data-theme="dark"] input[type="date"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input[type="file"],
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: #64748b !important;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+    border-color: #38bdf8 !important;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Landing Page Components (home.html)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .stats-container {
+    background-color: #111827 !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .stat-box {
+    border-right: 1px solid #1e293b !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .stat-label {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .sec-3 .box-element {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .sec-3 .box-element:hover {
+    background: #161f30 !important;
+    border-color: #7a65ff !important;
+}
+
+[data-theme="dark"] .feature-head {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .feature-desc {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .circle {
+    background: #111827 !important;
+    border-color: #334155 !important;
+    color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .step h2 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .step p {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .d3 {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .d3:hover {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 12px 28px rgba(56, 189, 248, 0.2) !important;
+}
+
+[data-theme="dark"] .event-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .event-desc {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .event-venue {
+    color: #cbd5e1 !important;
+    border-top: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .event-meta {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .review-box {
+    background: linear-gradient(to top left, #111827, #161f30) !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .review-box:hover {
+    background: linear-gradient(to top left, #161f30, #1e293b) !important;
+    border-color: #38bdf8 !important;
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .review-box h4 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .review-box .designation {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .footer-section {
+    background-color: #050811 !important;
+    border-top: 1px solid #1e293b !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Dashboards (host.html, coordinator.html, user.html, admin.html)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .dashboard,
+[data-theme="dark"] .main-content {
+    background-color: #0b0f19 !important;
+}
+
+[data-theme="dark"] .top-navbar {
+    background-color: #080c14 !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .sidebar {
+    background-color: #080c14 !important;
+    border-right: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .sidebar-menu li a {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .sidebar-menu li a:hover,
+[data-theme="dark"] .sidebar-menu li a.active {
+    background: linear-gradient(to right, #7a65ff, #38b2fe) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .sidebar-footer {
+    border-top: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .dashboard-panel,
+[data-theme="dark"] .table-card,
+[data-theme="dark"] .scanner-card,
+[data-theme="dark"] .attendance-info,
+[data-theme="dark"] .tool-box,
+[data-theme="dark"] .photo-scroll-section,
+[data-theme="dark"] .scroll-img-card,
+[data-theme="dark"] .info-box,
+[data-theme="dark"] .qr-pass-container,
+[data-theme="dark"] .feedback-card,
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] .filter-card {
+    background-color: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .panel-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .mini-event-card {
+    border-color: #1e293b !important;
+    background: #0f172a !important;
+}
+
+[data-theme="dark"] .mini-event-info h3 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .mini-event-info p {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .upcoming-mini-item {
+    border-bottom: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .upcoming-mini-item h4 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .tool-box {
+    background: #111827 !important;
+}
+
+[data-theme="dark"] .tool-box:hover {
+    background: #161f30 !important;
+    border-color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .tool-box-data .head-line {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .tool-box-data .sub-line {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .live-ticker-wrapper {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .ticker-content {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .back-dashboard-btn {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .back-dashboard-btn:hover {
+    background: #334155 !important;
+}
+
+/* Tables across all dashboards */
+[data-theme="dark"] table {
+    background-color: #111827 !important;
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] th {
+    background-color: #0f172a !important;
+    color: #94a3b8 !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] td {
+    color: #cbd5e1 !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] tr:hover td {
+    background-color: #161f30 !important;
+}
+
+[data-theme="dark"] .admin-dropdown-menu {
+    background-color: #111827 !important;
+    border: 1px solid #334155 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .admin-dropdown-menu a {
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .admin-dropdown-menu a:hover {
+    background-color: #1e293b !important;
+    color: #38bdf8 !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Gallery Page (gallery.html)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .gallery-main {
+    background-color: #0b0f19 !important;
+}
+
+[data-theme="dark"] .gallery-header h2 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .upload-panel-card,
+[data-theme="dark"] .slider-container,
+[data-theme="dark"] .gallery-card {
+    background-color: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .gallery-card p {
+    color: #f8fafc !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Upcoming & Ongoing Event Pages (upcommingEvent.html, ongoingEvent.html)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .event-card {
+    background-color: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .card-content h3 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .card-content .event-desc {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .schedule-container {
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .schedule-item span {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .card-footer {
+    border-top: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .location {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .search-box,
+[data-theme="dark"] .filter-dropdown select {
+    background-color: #111827 !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .progress-container {
+    background-color: #0f172a !important;
+}
+
+[data-theme="dark"] .progress-bar {
+    background-color: #1e293b !important;
+}
+
+[data-theme="dark"] .progress-info span {
+    color: #cbd5e1 !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. Authentication & Standalone Forms (login.html, signUp.html, registerEvent.html)
+   -------------------------------------------------------------------------- */
+/* Light Mode adjustments for login & register */
+html:not([data-theme="dark"]) body:has(.login-wrapper),
+html:not([data-theme="dark"]) body:has(.signup-wrapper),
+html:not([data-theme="dark"]) body:has(.register-wrapper) {
+    background-color: #f8fafc;
+}
+
+html:not([data-theme="dark"]) .login-container,
+html:not([data-theme="dark"]) .signup-container,
+html:not([data-theme="dark"]) .register-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark Mode for Auth Cards */
+[data-theme="dark"] .login-container,
+[data-theme="dark"] .signup-container,
+[data-theme="dark"] .register-container,
+[data-theme="dark"] .form-card {
+    background: rgba(17, 24, 39, 0.92) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid #334155 !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-theme="dark"] .animate-title {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .animate-subtitle {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .form-group label {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .password-toggle-btn {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .password-toggle-btn:hover {
+    color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .blob {
+    opacity: 0.15 !important;
+}
+
+/* --------------------------------------------------------------------------
+   9. Contact & Help Centre (contactUS.html, help.html)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .contact-section {
+    background-color: #0b0f19 !important;
+}
+
+[data-theme="dark"] .contact-form-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .contact-form-card label {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .help-hero {
+    background: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #161f30 100%) !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .category-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .category-card:hover {
+    background: #161f30 !important;
+    border-color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .category-card h3 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .category-card p {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .faq-item {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
+
+[data-theme="dark"] .faq-question {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .faq-answer {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .guide-card {
+    background: #111827 !important;
+    border: 1px solid #1e293b !important;
+}
