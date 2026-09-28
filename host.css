@@ -15,7 +15,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 65px;
+    height: 50px;
     background-color: #111118;
     display: flex;
     align-items: center;
@@ -152,9 +152,9 @@ body {
 /* ---------------- Sidebar (Hover Expand / Collapse) ---------------- */
 .sidebar {
     position: fixed;
-    top: 65px;
+    top: 50px;
     left: 0;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 50px);
     width: 75px;
     background: #1e1e2f;
     color: #fff;
@@ -265,9 +265,9 @@ body {
 /* ---------------- Main Content Layout ---------------- */
 .main-content {
     width: calc(100% - 75px);
-    min-height: calc(100vh - 65px);
+    min-height: calc(100vh - 50px);
     background-color: #f4f3f3;
-    margin-top: 65px;
+    margin-top: 50px;
     margin-left: 75px;
     transition: margin-left 0.3s ease, width 0.3s ease;
     padding-bottom: 40px;
@@ -653,4 +653,119 @@ tr:hover td {
         padding-left: 20px;
         padding-right: 20px;
     }
+}
+
+/* =========================================================
+   CAMERA QR SCANNER (HOST ATTENDANCE)
+========================================================= */
+
+.attendance-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: start;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 900px) {
+    .attendance-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scanner-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.scanner-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.scanner-card > p {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+#host-qr-reader {
+    width: 100%;
+    max-width: 420px;
+    min-height: 200px;
+    margin: 0 auto 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px dashed #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.scanner-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.scan-status {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    font-size: 13px;
+    color: #475569;
+}
+
+.scan-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.scan-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.attendance-info {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.attendance-info h3 {
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+.attendance-info ul {
+    padding-left: 20px;
+}
+
+.attendance-info li {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.info-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 13px;
+    margin-bottom: 18px;
 }

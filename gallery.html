@@ -12,11 +12,11 @@
         <div class="nav-brand">
             <h1 class="logo">CAMPUSCONNECT</h1>
         </div>
-        <nav class="nav-links">
-            <a href="#" onclick="goBackToDashboard(event)">Dashboard</a>
-            <a href="#">About Us</a>
-            <a href="gallery.html" class="active">Gallery</a>
-            <a href="#">Contact Us</a>
+        <nav class="nav-links" id="galleryNavLinks">
+            <a href="home.html">HOME</a>
+            <a href="gallery.html" class="active">GALLERY</a>
+            <a href="contactUS.html">CONTACT US</a>
+            <a href="help.html">HELPCENTER</a>
         </nav>
         
         <div class="admin-icon" id="navProfileContainer"></div>
@@ -25,7 +25,7 @@
     <main class="gallery-main">
         <div class="gallery-header">
             <h2>Event Gallery Archive</h2>
-            <a href="#" class="back-dashboard-btn" onclick="goBackToDashboard(event)"><i class="bi bi-arrow-left"></i> Back to Dashboard</a>
+            <a href="home.html" class="back-dashboard-btn" id="galleryBackBtn"><i class="bi bi-arrow-left"></i> Back to Home</a>
         </div>
 
         <div id="coordinatorUploadSection" class="upload-panel-card" style="display: none;">
@@ -99,57 +99,126 @@
         }
         setInterval(nextSlide, 5000);
 
-        // Unified DOM Content Loaded script for role checking
+        // Role-based authentication check
         window.addEventListener('DOMContentLoaded', () => {
             const role = localStorage.getItem('userRole');
+            const isAuth = localStorage.getItem('campusConnectAdminAuth') === 'true';
             const uploadSection = document.getElementById('coordinatorUploadSection');
             const profileContainer = document.getElementById('navProfileContainer');
+            const backBtn = document.getElementById('galleryBackBtn');
+            const navLinks = document.getElementById('galleryNavLinks');
+
+            if (!isAuth || !role) {
+                // User is NOT logged in (Guest)
+                if (uploadSection) uploadSection.style.display = 'none';
+
+                if (profileContainer) {
+                    profileContainer.innerHTML = `
+                        <a href="login.html" class="gallery-login-btn">
+                            LOGIN
+                        </a>
+                    `;
+                }
+
+                if (backBtn) {
+                    backBtn.href = "home.html";
+                    backBtn.onclick = null;
+                    backBtn.innerHTML = '<i class="bi bi-arrow-left"></i> Back to Home';
+                }
+
+                if (navLinks) {
+                    navLinks.innerHTML = `
+                        <a href="home.html">HOME</a>
+                        <a href="gallery.html" class="active">GALLERY</a>
+                        <a href="contactUS.html">CONTACT US</a>
+                        <a href="help.html">HELPCENTER</a>
+                    `;
+                }
+                return;
+            }
+
+            // User IS logged in
+            if (backBtn) {
+                backBtn.href = "#";
+                backBtn.onclick = goBackToDashboard;
+                backBtn.innerHTML = '<i class="bi bi-arrow-left"></i> Back to Dashboard';
+            }
+
+            if (navLinks) {
+                navLinks.innerHTML = `
+                    <a href="home.html">HOME</a>
+                    <a href="#" onclick="goBackToDashboard(event)">DASHBOARD</a>
+                    <a href="gallery.html" class="active">GALLERY</a>
+                    <a href="contactUS.html">CONTACT US</a>
+                    <a href="help.html">HELPCENTER</a>
+                `;
+            }
 
             if (role === 'coordinator') {
                 if (uploadSection) uploadSection.style.display = 'block';
-                profileContainer.innerHTML = `
-                    <div class="admin-dropdown-container">
-                        <button class="admin-btn">
-                            <div class="avatar-circle" style="background: linear-gradient(to right, #7A65FF, #38B2FE);">C</div>
-                            <span class="btn-text">Coordinator</span>
-                            <i class="bi bi-chevron-down dropdown-arrow"></i>
-                        </button>
-                        <div class="admin-dropdown-menu">
-                            <a href="#" onclick="logoutUser(event)"><i class="bi bi-box-arrow-right"></i> Logout</a>
-                        </div>
-                    </div>
-                `;
+                renderProfileDropdown('C', 'Coordinator');
+            } else if (role === 'host') {
+                if (uploadSection) uploadSection.style.display = 'block';
+                renderProfileDropdown('H', 'Host');
+            } else if (role === 'user') {
+                if (uploadSection) uploadSection.style.display = 'none';
+                renderProfileDropdown('U', 'Student');
+            } else if (role === 'admin') {
+                if (uploadSection) uploadSection.style.display = 'block';
+                renderProfileDropdown('A', 'Admin');
             } else {
                 if (uploadSection) uploadSection.style.display = 'none';
-                profileContainer.innerHTML = `
-                    <div class="admin-dropdown-container">
-                        <button class="admin-btn">
-                            <div class="avatar-circle">A</div>
-                            <span class="btn-text">Admin</span>
-                            <i class="bi bi-chevron-down dropdown-arrow"></i>
-                        </button>
-                        <div class="admin-dropdown-menu">
-                            <a href="#" onclick="logoutUser(event)"><i class="bi bi-box-arrow-right"></i> Logout</a>
-                        </div>
-                    </div>
-                `;
+                renderProfileDropdown('U', 'User');
             }
         });
 
+        function renderProfileDropdown(letter, label) {
+            const profileContainer = document.getElementById('navProfileContainer');
+            if (!profileContainer) return;
+            profileContainer.innerHTML = `
+                <div class="admin-dropdown-container">
+                    <button class="admin-btn">
+                        <div class="avatar-circle">${letter}</div>
+                        <span class="btn-text">${label}</span>
+                        <i class="bi bi-chevron-down dropdown-arrow"></i>
+                    </button>
+                    <div class="admin-dropdown-menu">
+                        <a href="#" onclick="logoutUser(event)">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
         function logoutUser(event) {
-            event.preventDefault();
+            if (event) event.preventDefault();
             localStorage.removeItem('campusConnectAdminAuth');
             localStorage.removeItem('userRole');
+            localStorage.removeItem('studentName');
             window.location.href = 'home.html';
         }
 
         function goBackToDashboard(event) {
-            event.preventDefault();
+            if (event) event.preventDefault();
             const role = localStorage.getItem('userRole');
+            const isAuth = localStorage.getItem('campusConnectAdminAuth') === 'true';
+
+            if (!isAuth || !role) {
+                window.location.href = 'home.html';
+                return;
+            }
+
             if (role === 'coordinator') {
                 window.location.href = 'coordinator.html';
+            } else if (role === 'host') {
+                window.location.href = 'host.html';
+            } else if (role === 'user') {
+                window.location.href = 'user.html';
+            } else if (role === 'admin') {
+                window.location.href = 'admin.html';
             } else {
-                window.location.href = 'index.html';
+                window.location.href = 'home.html';
             }
         }
 
