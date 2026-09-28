@@ -1,2130 +1,2418 @@
-// ```javascript
-// /* =========================================================
-//    CAMPUSCONNECT USER / STUDENT DASHBOARD
-// ========================================================= */
-
-
-// /* =========================================================
-//    SAMPLE USER DATA
-//    Later this can come from your backend/database.
-// ========================================================= */
-
-// const currentUser = {
-//     name: "Student",
-//     rollNo: "CS2201",
-//     email: "student@campusconnect.com",
-//     department: "Computer Science",
-//     year: "3rd Year"
-// };
-
-
-// /* =========================================================
-//    SAMPLE EVENT DATA
-// ========================================================= */
-
-// const events = [
-
-//     {
-//         id: 1,
-//         name: "Tech Fest 2026 - Day 1",
-//         category: "Technical",
-//         date: "15 March 2026",
-//         time: "10:00 AM - 6:00 PM",
-//         venue: "Main Auditorium, Room 102",
-//         status: "ongoing",
-//         registered: true,
-//         attendance: false
-//     },
-
-//     {
-//         id: 2,
-//         name: "Cultural Night",
-//         category: "Cultural",
-//         date: "15 August 2026",
-//         time: "5:30 PM - 9:30 PM",
-//         venue: "Open Air Amphitheatre",
-//         status: "upcoming",
-//         registered: true,
-//         attendance: false
-//     },
-
-//     {
-//         id: 3,
-//         name: "Startup Pitch Meetup",
-//         category: "Workshop",
-//         date: "22 August 2026",
-//         time: "2:00 PM - 5:00 PM",
-//         venue: "Seminar Hall 2",
-//         status: "upcoming",
-//         registered: false,
-//         attendance: false
-//     },
-
-//     {
-//         id: 4,
-//         name: "Bot Wars Championship",
-//         category: "Technical",
-//         date: "10 February 2026",
-//         time: "11:00 AM - 3:00 PM",
-//         venue: "Engineering Block, Lab 4",
-//         status: "ended",
-//         registered: true,
-//         attendance: true
-//     },
-
-//     {
-//         id: 5,
-//         name: "Poetry Slam Night",
-//         category: "Cultural",
-//         date: "28 January 2026",
-//         time: "6:00 PM - 8:00 PM",
-//         venue: "Central Library Hall",
-//         status: "ended",
-//         registered: true,
-//         attendance: true
-//     },
+/* =========================================================
+   CAMPUSCONNECT USER / STUDENT DASHBOARD
+========================================================= */
+
+
+/* =========================================================
+   SAMPLE USER DATA
+   Later this can come from your backend/database.
+========================================================= */
+
+const currentUser = {
+    name: "Student",
+    rollNo: "CS2201",
+    email: "student@campusconnect.com",
+    department: "Computer Science",
+    year: "3rd Year"
+};
+
+
+/* =========================================================
+   SAMPLE EVENT DATA
+========================================================= */
+
+const events = [
+
+    {
+        id: 1,
+        name: "Tech Fest 2026 - Day 1",
+        category: "Technical",
+        date: "15 March 2026",
+        time: "10:00 AM - 6:00 PM",
+        venue: "Main Auditorium, Room 102",
+        status: "ongoing",
+        registered: true,
+        attendance: false
+    },
+
+    {
+        id: 2,
+        name: "Cultural Night",
+        category: "Cultural",
+        date: "15 August 2026",
+        time: "5:30 PM - 9:30 PM",
+        venue: "Open Air Amphitheatre",
+        status: "upcoming",
+        registered: true,
+        attendance: false
+    },
+
+    {
+        id: 3,
+        name: "Startup Pitch Meetup",
+        category: "Workshop",
+        date: "22 August 2026",
+        time: "2:00 PM - 5:00 PM",
+        venue: "Seminar Hall 2",
+        status: "upcoming",
+        registered: false,
+        attendance: false
+    },
+
+    {
+        id: 4,
+        name: "Bot Wars Championship",
+        category: "Technical",
+        date: "10 February 2026",
+        time: "11:00 AM - 3:00 PM",
+        venue: "Engineering Block, Lab 4",
+        status: "ended",
+        registered: true,
+        attendance: true
+    },
+
+    {
+        id: 5,
+        name: "Poetry Slam Night",
+        category: "Cultural",
+        date: "28 January 2026",
+        time: "6:00 PM - 8:00 PM",
+        venue: "Central Library Hall",
+        status: "ended",
+        registered: true,
+        attendance: true
+    },
+
+    {
+        id: 6,
+        name: "Coding Bootcamp",
+        category: "Workshop",
+        date: "05 January 2026",
+        time: "10:00 AM - 4:00 PM",
+        venue: "Computer Lab 3",
+        status: "ended",
+        registered: true,
+        attendance: true
+    }
 
-//     {
-//         id: 6,
-//         name: "Coding Bootcamp",
-//         category: "Workshop",
-//         date: "05 January 2026",
-//         time: "10:00 AM - 4:00 PM",
-//         venue: "Computer Lab 3",
-//         status: "ended",
-//         registered: true,
-//         attendance: true
-//     }
+];
 
-// ];
 
+/* =========================================================
+   RATING LABELS & FEEDBACK STORAGE KEY
+========================================================= */
 
-// /* =========================================================
-//    INITIALIZATION
-// ========================================================= */
+const FEEDBACK_STORAGE_KEY = "campusConnectUserFeedback";
 
-// document.addEventListener("DOMContentLoaded", function () {
+const RATING_LABELS = {
+    1: "1 Star — Poor",
+    2: "2 Stars — Fair",
+    3: "3 Stars — Good",
+    4: "4 Stars — Very Good",
+    5: "5 Stars — Excellent"
+};
 
-//     loadUserProfile();
 
-//     updateStatistics();
+/* =========================================================
+   INITIALIZATION
+========================================================= */
 
-// });
+document.addEventListener("DOMContentLoaded", function () {
 
+    loadUserProfile();
 
-// /* =========================================================
-//    SIDEBAR FUNCTIONS
-// ========================================================= */
+    updateStatistics();
 
-// function expandSidebar() {
-//     // CSS handles expansion.
-// }
+});
 
-// function collapseSidebar() {
-//     // CSS handles collapse.
-// }
 
+/* =========================================================
+   SIDEBAR FUNCTIONS
+========================================================= */
 
-// /* =========================================================
-//    USER PROFILE
-// ========================================================= */
+function expandSidebar() {
+    // CSS handles expansion.
+}
 
-// function loadUserProfile() {
+function collapseSidebar() {
+    // CSS handles collapse.
+}
 
-//     const storedName =
-//         localStorage.getItem("studentName");
 
-//     if (storedName) {
-//         currentUser.name = storedName;
-//     }
+/* =========================================================
+   USER PROFILE
+========================================================= */
 
-//     const avatar =
-//         document.getElementById("navAvatar");
+function loadUserProfile() {
 
-//     const name =
-//         document.getElementById("navUserName");
+    const storedName =
+        localStorage.getItem("studentName");
 
-//     if (avatar) {
+    if (storedName) {
+        currentUser.name = storedName;
+    }
 
-//         avatar.innerText =
-//             currentUser.name
-//                 .charAt(0)
-//                 .toUpperCase();
+    const avatar =
+        document.getElementById("navAvatar");
 
-//     }
+    const name =
+        document.getElementById("navUserName");
 
-//     if (name) {
+    if (avatar) {
 
-//         name.innerText =
-//             currentUser.name;
+        avatar.innerText =
+            currentUser.name
+                .charAt(0)
+                .toUpperCase();
 
-//     }
+    }
 
-// }
+    if (name) {
 
+        name.innerText =
+            currentUser.name;
 
-// /* =========================================================
-//    LOGOUT
-// ========================================================= */
+    }
 
-// function logoutUser(event) {
+}
 
-//     if (event) {
-//         event.preventDefault();
-//     }
 
-//     localStorage.removeItem("campusConnectAdminAuth");
+/* =========================================================
+   LOGOUT
+========================================================= */
 
-//     localStorage.removeItem("userRole");
+function logoutUser(event) {
 
-//     localStorage.removeItem("studentName");
+    if (event) {
+        event.preventDefault();
+    }
 
-//     window.location.href = "home.html";
+    localStorage.removeItem("campusConnectAdminAuth");
 
-// }
+    localStorage.removeItem("userRole");
 
+    localStorage.removeItem("studentName");
 
-// /* =========================================================
-//    STATISTICS
-// ========================================================= */
+    window.location.href = "home.html";
 
-// function updateStatistics() {
+}
 
-//     const registered =
-//         events.filter(event => event.registered);
 
-//     const past =
-//         registered.filter(
-//             event => event.status === "ended"
-//         );
+/* =========================================================
+   STATISTICS
+========================================================= */
 
-//     const upcoming =
-//         registered.filter(
-//             event => event.status === "upcoming"
-//         );
+function updateStatistics() {
 
-//     const ongoing =
-//         registered.filter(
-//             event => event.status === "ongoing"
-//         );
+    const registered =
+        events.filter(event => event.registered);
 
-//     const registeredElement =
-//         document.getElementById("registeredCount");
+    const past =
+        registered.filter(
+            event => event.status === "ended"
+        );
 
-//     const pastElement =
-//         document.getElementById("pastCount");
+    const upcoming =
+        registered.filter(
+            event => event.status === "upcoming"
+        );
 
-//     const upcomingElement =
-//         document.getElementById("upcomingCount");
+    const ongoing =
+        registered.filter(
+            event => event.status === "ongoing"
+        );
 
-//     const ongoingElement =
-//         document.getElementById("ongoingCount");
+    const registeredElement =
+        document.getElementById("registeredCount");
 
-//     if (registeredElement)
-//         registeredElement.innerText =
-//             registered.length;
+    const pastElement =
+        document.getElementById("pastCount");
 
-//     if (pastElement)
-//         pastElement.innerText =
-//             past.length;
+    const upcomingElement =
+        document.getElementById("upcomingCount");
 
-//     if (upcomingElement)
-//         upcomingElement.innerText =
-//             upcoming.length;
+    const ongoingElement =
+        document.getElementById("ongoingCount");
 
-//     if (ongoingElement)
-//         ongoingElement.innerText =
-//             ongoing.length;
+    if (registeredElement)
+        registeredElement.innerText =
+            registered.length;
 
-// }
+    if (pastElement)
+        pastElement.innerText =
+            past.length;
 
+    if (upcomingElement)
+        upcomingElement.innerText =
+            upcoming.length;
 
-// /* =========================================================
-//    VIEW SWITCHING
-// ========================================================= */
+    if (ongoingElement)
+        ongoingElement.innerText =
+            ongoing.length;
 
-// function switchView(viewName, element) {
+}
 
-//     const dashboardView =
-//         document.getElementById("view-dashboard");
 
-//     const contentContainer =
-//         document.getElementById("view-content-container");
+/* =========================================================
+   VIEW SWITCHING
+========================================================= */
 
-//     const contentTitle =
-//         document.getElementById("content-title");
+function switchView(viewName, element) {
 
-//     const contentBody =
-//         document.getElementById("content-body");
+    const dashboardView =
+        document.getElementById("view-dashboard");
 
+    const contentContainer =
+        document.getElementById("view-content-container");
 
-//     /* Remove active sidebar state */
+    const contentTitle =
+        document.getElementById("content-title");
 
-//     document.querySelectorAll(".sidebar-menu a")
-//         .forEach(link => {
+    const contentBody =
+        document.getElementById("content-body");
 
-//             link.classList.remove("active");
 
-//         });
+    /* Remove active sidebar state */
 
+    document.querySelectorAll(".sidebar-menu a")
+        .forEach(link => {
 
-//     /* Add active state */
+            link.classList.remove("active");
 
-//     if (element) {
+        });
 
-//         element.classList.add("active");
 
-//     } else {
+    /* Add active state */
 
-//         const matchingLink =
-//             [...document.querySelectorAll(".sidebar-menu a")]
-//                 .find(link =>
-//                     link.getAttribute("onclick") &&
-//                     link.getAttribute("onclick")
-//                         .includes("'" + viewName + "'")
-//                 );
+    if (element) {
 
-//         if (matchingLink) {
+        element.classList.add("active");
 
-//             matchingLink.classList.add("active");
+    } else {
 
-//         }
+        const matchingLink =
+            [...document.querySelectorAll(".sidebar-menu a")]
+                .find(link =>
+                    link.getAttribute("onclick") &&
+                    link.getAttribute("onclick")
+                        .includes("'" + viewName + "'")
+                );
 
-//     }
+        if (matchingLink) {
 
+            matchingLink.classList.add("active");
 
-//     /* Dashboard */
+        }
 
-//     if (viewName === "dashboard") {
+    }
 
-//         dashboardView.style.display =
-//             "block";
 
-//         contentContainer.style.display =
-//             "none";
+    /* Dashboard */
 
-//         return;
+    if (viewName === "dashboard") {
 
-//     }
+        dashboardView.style.display =
+            "block";
 
+        contentContainer.style.display =
+            "none";
 
-//     dashboardView.style.display =
-//         "none";
+        return;
 
-//     contentContainer.style.display =
-//         "block";
+    }
 
 
-//     switch (viewName) {
+    dashboardView.style.display =
+        "none";
 
-//         case "myEvents":
+    contentContainer.style.display =
+        "block";
 
-//             contentTitle.innerText =
-//                 "My Registered Events";
 
-//             contentBody.innerHTML =
-//                 generateMyEvents();
+    switch (viewName) {
 
-//             break;
+        case "myEvents":
 
+            contentTitle.innerText =
+                "My Registered Events";
 
-//         case "upcoming":
+            contentBody.innerHTML =
+                generateMyEvents();
 
-//             contentTitle.innerText =
-//                 "Upcoming Events";
+            break;
 
-//             contentBody.innerHTML =
-//                 generateUpcomingEvents();
 
-//             break;
+        case "upcoming":
 
+            contentTitle.innerText =
+                "Upcoming Events";
 
-//         case "ongoing":
+            contentBody.innerHTML =
+                generateUpcomingEvents();
 
-//             contentTitle.innerText =
-//                 "Ongoing Events";
+            break;
 
-//             contentBody.innerHTML =
-//                 generateOngoingEvents();
 
-//             break;
+        case "ongoing":
 
+            contentTitle.innerText =
+                "Ongoing Events";
 
-//         case "register":
+            contentBody.innerHTML =
+                generateOngoingEvents();
 
-//             contentTitle.innerText =
-//                 "Register for an Event";
+            break;
 
-//             contentBody.innerHTML =
-//                 generateRegistrationView();
 
-//             break;
+        case "register":
 
+            contentTitle.innerText =
+                "Register for an Event";
 
-//         case "attendance":
+            contentBody.innerHTML =
+                generateRegistrationView();
 
-//             contentTitle.innerText =
-//                 "Scan QR for Attendance";
+            break;
 
-//             contentBody.innerHTML =
-//                 generateAttendanceView();
 
-//             break;
+        case "attendance":
 
+            contentTitle.innerText =
+                "My Attendance QR Pass";
 
-//         case "feedback":
+            contentBody.innerHTML =
+                generateAttendanceView();
 
-//             contentTitle.innerText =
-//                 "Event Feedback";
+            break;
 
-//             contentBody.innerHTML =
-//                 generateFeedbackView();
 
-//             break;
+        case "feedback":
 
+            selectedRating = 0;
 
-//         case "help":
+            contentTitle.innerText =
+                "Event Feedback";
 
-//             contentTitle.innerText =
-//                 "Help Centre";
+            contentBody.innerHTML =
+                generateFeedbackView();
 
-//             contentBody.innerHTML =
-//                 generateHelpView();
+            break;
 
-//             break;
 
-//     }
+        case "help":
 
-// }
+            contentTitle.innerText =
+                "Help Centre";
 
+            contentBody.innerHTML =
+                generateHelpView();
 
-// /* =========================================================
-//    MY EVENTS
-// ========================================================= */
+            break;
 
-// function generateMyEvents() {
+    }
 
-//     const registeredEvents =
-//         events.filter(event => event.registered);
+}
 
 
-//     if (registeredEvents.length === 0) {
+/* =========================================================
+   MY EVENTS
+========================================================= */
 
-//         return `
-//             <div class="empty-state">
-//                 <i class="bi bi-calendar-x"></i>
-//                 <h3>No Registered Events</h3>
-//                 <p>You have not registered for any event yet.</p>
-//             </div>
-//         `;
+function generateMyEvents() {
 
-//     }
+    const registeredEvents =
+        events.filter(event => event.registered);
 
 
-//     let rows = "";
+    if (registeredEvents.length === 0) {
 
+        return `
+            <div class="empty-state">
+                <i class="bi bi-calendar-x"></i>
+                <h3>No Registered Events</h3>
+                <p>You have not registered for any event yet.</p>
+            </div>
+        `;
 
-//     registeredEvents.forEach(event => {
+    }
 
-//         let statusHTML = "";
 
-//         if (event.status === "ongoing") {
+    let rows = "";
 
-//             statusHTML =
-//                 `<span class="status-pill status-live">Ongoing</span>`;
 
-//         } else if (event.status === "upcoming") {
+    registeredEvents.forEach(event => {
 
-//             statusHTML =
-//                 `<span class="status-pill status-upcoming">Upcoming</span>`;
+        let statusHTML = "";
 
-//         } else {
+        if (event.status === "ongoing") {
 
-//             statusHTML =
-//                 `<span class="status-pill status-ended">Completed</span>`;
+            statusHTML =
+                `<span class="status-pill status-live">Ongoing</span>`;
 
-//         }
+        } else if (event.status === "upcoming") {
 
+            statusHTML =
+                `<span class="status-pill status-upcoming">Upcoming</span>`;
 
-//         let attendanceHTML =
-//             event.attendance
+        } else {
 
-//                 ? `<span class="status-pill status-present">
-//                         Present
-//                    </span>`
+            statusHTML =
+                `<span class="status-pill status-ended">Completed</span>`;
 
-//                 : event.status === "ended"
+        }
 
-//                     ? `<span class="status-pill status-absent">
-//                             Not Marked
-//                        </span>`
 
-//                     : `<span class="status-pill status-registered">
-//                             Pending
-//                        </span>`;
+        let attendanceHTML =
+            event.attendance
 
+                ? `<span class="status-pill status-present">
+                        Present
+                   </span>`
 
-//         rows += `
+                : event.status === "ended"
 
-//             <tr>
+                    ? `<span class="status-pill status-absent">
+                            Not Marked
+                       </span>`
 
-//                 <td>
-//                     <strong>${event.name}</strong>
-//                 </td>
+                    : `<span class="status-pill status-registered">
+                            Pending
+                       </span>`;
 
-//                 <td>
-//                     ${event.category}
-//                 </td>
 
-//                 <td>
-//                     ${event.date}
-//                 </td>
+        rows += `
 
-//                 <td>
-//                     ${event.time}
-//                 </td>
+            <tr>
 
-//                 <td>
-//                     ${statusHTML}
-//                 </td>
+                <td>
+                    <strong>${event.name}</strong>
+                </td>
 
-//                 <td>
-//                     ${attendanceHTML}
-//                 </td>
+                <td>
+                    ${event.category}
+                </td>
 
-//             </tr>
+                <td>
+                    ${event.date}
+                </td>
 
-//         `;
+                <td>
+                    ${event.time}
+                </td>
 
-//     });
+                <td>
+                    ${statusHTML}
+                </td>
 
+                <td>
+                    ${attendanceHTML}
+                </td>
 
-//     return `
+            </tr>
 
-//         <div class="table-responsive">
+        `;
 
-//             <table>
+    });
 
-//                 <thead>
 
-//                     <tr>
-//                         <th>Event</th>
-//                         <th>Category</th>
-//                         <th>Date</th>
-//                         <th>Time</th>
-//                         <th>Status</th>
-//                         <th>Attendance</th>
-//                     </tr>
+    return `
 
-//                 </thead>
+        <div class="table-responsive">
 
-//                 <tbody>
-//                     ${rows}
-//                 </tbody>
+            <table>
 
-//             </table>
+                <thead>
 
-//         </div>
+                    <tr>
+                        <th>Event</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Attendance</th>
+                    </tr>
 
-//     `;
+                </thead>
 
-// }
+                <tbody>
+                    ${rows}
+                </tbody>
 
+            </table>
 
-// /* =========================================================
-//    UPCOMING EVENTS
-// ========================================================= */
+        </div>
 
-// function generateUpcomingEvents() {
+    `;
 
-//     const upcomingEvents =
-//         events.filter(
-//             event => event.status === "upcoming"
-//         );
+}
 
 
-//     return `
+/* =========================================================
+   UPCOMING EVENTS
+========================================================= */
 
-//         <div class="filter-bar">
+function generateUpcomingEvents() {
 
-//             <input
-//                 type="text"
-//                 class="filter-input"
-//                 id="eventSearch"
-//                 placeholder="Search event..."
-//                 oninput="filterUpcomingEvents()"
-//             >
+    const upcomingEvents =
+        events.filter(
+            event => event.status === "upcoming"
+        );
 
-//             <select
-//                 class="filter-input"
-//                 id="categoryFilter"
-//                 onchange="filterUpcomingEvents()"
-//             >
 
-//                 <option value="all">
-//                     All Categories
-//                 </option>
+    return `
 
-//                 <option value="Technical">
-//                     Technical
-//                 </option>
+        <div class="filter-bar">
 
-//                 <option value="Cultural">
-//                     Cultural
-//                 </option>
+            <input
+                type="text"
+                class="filter-input"
+                id="eventSearch"
+                placeholder="Search event..."
+                oninput="filterUpcomingEvents()"
+            >
 
-//                 <option value="Sports">
-//                     Sports
-//                 </option>
+            <select
+                class="filter-input"
+                id="categoryFilter"
+                onchange="filterUpcomingEvents()"
+            >
 
-//                 <option value="Workshop">
-//                     Workshop
-//                 </option>
+                <option value="all">
+                    All Categories
+                </option>
 
-//             </select>
+                <option value="Technical">
+                    Technical
+                </option>
 
-//         </div>
+                <option value="Cultural">
+                    Cultural
+                </option>
 
+                <option value="Sports">
+                    Sports
+                </option>
 
-//         <div id="upcomingEventsTable">
+                <option value="Workshop">
+                    Workshop
+                </option>
 
-//             ${createUpcomingTable(upcomingEvents)}
+            </select>
 
-//         </div>
+        </div>
 
-//     `;
 
-// }
+        <div id="upcomingEventsTable">
 
+            ${createUpcomingTable(upcomingEvents)}
 
-// function createUpcomingTable(eventList) {
+        </div>
 
-//     if (eventList.length === 0) {
+    `;
 
-//         return `
+}
 
-//             <div class="empty-state">
 
-//                 <i class="bi bi-calendar-x"></i>
+function createUpcomingTable(eventList) {
 
-//                 <h3>
-//                     No Events Found
-//                 </h3>
+    if (eventList.length === 0) {
 
-//                 <p>
-//                     Try changing your search or category.
-//                 </p>
+        return `
 
-//             </div>
+            <div class="empty-state">
 
-//         `;
+                <i class="bi bi-calendar-x"></i>
 
-//     }
+                <h3>
+                    No Events Found
+                </h3>
 
+                <p>
+                    Try changing your search or category.
+                </p>
 
-//     let rows = "";
+            </div>
 
+        `;
 
-//     eventList.forEach(event => {
+    }
 
-//         rows += `
 
-//             <tr>
+    let rows = "";
 
-//                 <td>
-//                     <strong>
-//                         ${event.name}
-//                     </strong>
-//                 </td>
 
-//                 <td>
-//                     ${event.category}
-//                 </td>
+    eventList.forEach(event => {
 
-//                 <td>
-//                     ${event.date}
-//                 </td>
+        rows += `
 
-//                 <td>
-//                     ${event.time}
-//                 </td>
+            <tr>
 
-//                 <td>
-//                     ${event.venue}
-//                 </td>
+                <td>
+                    <strong>
+                        ${event.name}
+                    </strong>
+                </td>
 
-//                 <td>
+                <td>
+                    ${event.category}
+                </td>
 
-//                     ${
-//                         event.registered
+                <td>
+                    ${event.date}
+                </td>
 
-//                         ? `<span class="status-pill status-registered">
-//                                 Registered
-//                            </span>`
+                <td>
+                    ${event.time}
+                </td>
 
-//                         : `<button
-//                                 class="btn-primary"
-//                                 onclick="openRegistration('${event.name}')">
-//                                 Register
-//                            </button>`
-//                     }
+                <td>
+                    ${event.venue}
+                </td>
 
-//                 </td>
+                <td>
 
-//             </tr>
+                    ${
+                        event.registered
 
-//         `;
+                        ? `<span class="status-pill status-registered">
+                                Registered
+                           </span>`
 
-//     });
+                        : `<button
+                                class="btn-primary"
+                                onclick="openRegistration('${event.name}')">
+                                Register
+                           </button>`
+                    }
 
+                </td>
 
-//     return `
+            </tr>
 
-//         <div class="table-responsive">
+        `;
 
-//             <table>
+    });
 
-//                 <thead>
 
-//                     <tr>
+    return `
 
-//                         <th>Event</th>
-//                         <th>Category</th>
-//                         <th>Date</th>
-//                         <th>Time</th>
-//                         <th>Venue</th>
-//                         <th>Action</th>
+        <div class="table-responsive">
 
-//                     </tr>
+            <table>
 
-//                 </thead>
+                <thead>
 
-//                 <tbody>
+                    <tr>
 
-//                     ${rows}
+                        <th>Event</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                        <th>Action</th>
 
-//                 </tbody>
+                    </tr>
 
-//             </table>
+                </thead>
 
-//         </div>
+                <tbody>
+                    ${rows}
+                </tbody>
 
-//     `;
+            </table>
 
-// }
+        </div>
 
+    `;
 
-// /* =========================================================
-//    FILTER UPCOMING EVENTS
-// ========================================================= */
+}
 
-// function filterUpcomingEvents() {
 
-//     const search =
-//         document.getElementById("eventSearch")
-//             ?.value
-//             .toLowerCase() || "";
+/* =========================================================
+   FILTER UPCOMING EVENTS
+========================================================= */
 
+function filterUpcomingEvents() {
 
-//     const category =
-//         document.getElementById("categoryFilter")
-//             ?.value || "all";
+    const search =
+        document.getElementById("eventSearch")
+            ?.value
+            .toLowerCase() || "";
 
 
-//     const filtered =
-//         events.filter(event => {
+    const category =
+        document.getElementById("categoryFilter")
+            ?.value || "all";
 
-//             if (event.status !== "upcoming") {
-//                 return false;
-//             }
 
+    const filtered =
+        events.filter(event => {
 
-//             const matchesSearch =
-//                 event.name
-//                     .toLowerCase()
-//                     .includes(search);
+            if (event.status !== "upcoming") {
+                return false;
+            }
 
 
-//             const matchesCategory =
-//                 category === "all" ||
-//                 event.category === category;
+            const matchesSearch =
+                event.name
+                    .toLowerCase()
+                    .includes(search);
 
 
-//             return matchesSearch &&
-//                 matchesCategory;
+            const matchesCategory =
+                category === "all" ||
+                event.category === category;
 
-//         });
 
+            return matchesSearch &&
+                matchesCategory;
 
-//     const container =
-//         document.getElementById(
-//             "upcomingEventsTable"
-//         );
+        });
 
 
-//     if (container) {
+    const container =
+        document.getElementById(
+            "upcomingEventsTable"
+        );
 
-//         container.innerHTML =
-//             createUpcomingTable(filtered);
 
-//     }
+    if (container) {
 
-// }
+        container.innerHTML =
+            createUpcomingTable(filtered);
 
+    }
 
-// /* =========================================================
-//    ONGOING EVENTS
-// ========================================================= */
+}
 
-// function generateOngoingEvents() {
 
-//     const ongoing =
-//         events.filter(
-//             event => event.status === "ongoing"
-//         );
+/* =========================================================
+   ONGOING EVENTS
+========================================================= */
 
+function generateOngoingEvents() {
 
-//     if (ongoing.length === 0) {
+    const ongoing =
+        events.filter(
+            event => event.status === "ongoing"
+        );
 
-//         return `
 
-//             <div class="empty-state">
+    if (ongoing.length === 0) {
 
-//                 <i class="bi bi-broadcast"></i>
+        return `
 
-//                 <h3>
-//                     No Ongoing Events
-//                 </h3>
+            <div class="empty-state">
 
-//                 <p>
-//                     You currently have no registered event happening.
-//                 </p>
+                <i class="bi bi-broadcast"></i>
 
-//             </div>
+                <h3>
+                    No Ongoing Events
+                </h3>
 
-//         `;
+                <p>
+                    You currently have no registered event happening.
+                </p>
 
-//     }
+            </div>
 
+        `;
 
-//     let rows = "";
+    }
 
 
-//     ongoing.forEach(event => {
+    let rows = "";
 
-//         rows += `
 
-//             <tr>
+    ongoing.forEach(event => {
 
-//                 <td>
-//                     <strong>
-//                         ${event.name}
-//                     </strong>
-//                 </td>
+        rows += `
 
-//                 <td>
-//                     ${event.date}
-//                 </td>
+            <tr>
 
-//                 <td>
-//                     ${event.time}
-//                 </td>
+                <td>
+                    <strong>
+                        ${event.name}
+                    </strong>
+                </td>
 
-//                 <td>
-//                     ${event.venue}
-//                 </td>
+                <td>
+                    ${event.date}
+                </td>
 
-//                 <td>
+                <td>
+                    ${event.time}
+                </td>
 
-//                     <span class="status-pill status-live">
-//                         Ongoing
-//                     </span>
+                <td>
+                    ${event.venue}
+                </td>
 
-//                 </td>
+                <td>
+                    <span class="status-pill status-live">
+                        Ongoing
+                    </span>
+                </td>
 
-//                 <td>
+                <td>
 
-//                     ${
-//                         event.attendance
+                    ${
+                        event.attendance
 
-//                         ? `<span class="status-pill status-present">
-//                                 Attendance Marked
-//                            </span>`
+                        ? `<span class="status-pill status-present">
+                                Attendance Marked
+                           </span>`
 
-//                         : `<button
-//                                 class="btn-primary"
-//                                 onclick="switchView('attendance')">
-//                                 Scan Attendance
-//                            </button>`
-//                     }
+                        : `<button
+                                class="btn-primary"
+                                onclick="switchView('attendance')">
+                                View Attendance QR
+                           </button>`
+                    }
 
-//                 </td>
+                </td>
 
-//             </tr>
+            </tr>
 
-//         `;
+        `;
 
-//     });
+    });
 
 
-//     return `
+    return `
 
-//         <div class="info-box">
+        <div class="info-box">
 
-//             <strong>
-//                 Attendance Reminder:
-//             </strong>
+            <strong>
+                Attendance Reminder:
+            </strong>
 
-//             If the Coordinator is displaying the event QR code,
-//             scan it to mark your attendance.
+            If the Coordinator is displaying the event QR code,
+            scan it to mark your attendance.
 
-//         </div>
+        </div>
 
 
-//         <div class="table-responsive">
+        <div class="table-responsive">
 
-//             <table>
+            <table>
 
-//                 <thead>
+                <thead>
 
-//                     <tr>
+                    <tr>
 
-//                         <th>Event</th>
-//                         <th>Date</th>
-//                         <th>Time</th>
-//                         <th>Venue</th>
-//                         <th>Status</th>
-//                         <th>Attendance</th>
+                        <th>Event</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                        <th>Status</th>
+                        <th>Attendance</th>
 
-//                     </tr>
+                    </tr>
 
-//                 </thead>
+                </thead>
 
-//                 <tbody>
+                <tbody>
+                    ${rows}
+                </tbody>
 
-//                     ${rows}
+            </table>
 
-//                 </tbody>
+        </div>
 
-//             </table>
+    `;
 
-//         </div>
+}
 
-//     `;
 
-// }
+/* =========================================================
+   REGISTER EVENT
+========================================================= */
 
+function generateRegistrationView(selectedEvent = "") {
 
-// /* =========================================================
-//    REGISTER EVENT
-// ========================================================= */
+    return `
 
-// function generateRegistrationView(selectedEvent = "") {
+        <div class="info-box">
 
-//     return `
+            <strong>
+                Event Registration
+            </strong>
 
-//         <div class="info-box">
+            <br>
 
-//             <strong>
-//                 Event Registration
-//             </strong>
+            Fill in your details to register for an upcoming event.
 
-//             <br>
+        </div>
 
-//             Fill in your details to register for an upcoming event.
 
-//         </div>
+        <form
+            onsubmit="submitEventRegistration(event)"
+        >
 
+            <div class="form-grid">
 
-//         <form
-//             onsubmit="submitEventRegistration(event)"
-//         >
+                <div class="form-field">
 
-//             <div class="form-grid">
+                    <label>
+                        Select Event
+                    </label>
 
-//                 <div class="form-field">
+                    <select
+                        id="registrationEvent"
+                        required
+                    >
 
-//                     <label>
-//                         Select Event
-//                     </label>
+                        <option value="">
+                            Choose an event...
+                        </option>
 
-//                     <select
-//                         id="registrationEvent"
-//                         required
-//                     >
+                        <option
+                            value="Cultural Night"
+                            ${selectedEvent === "Cultural Night" ? "selected" : ""}
+                        >
+                            Cultural Night
+                        </option>
 
-//                         <option value="">
-//                             Choose an event...
-//                         </option>
+                        <option
+                            value="Startup Pitch Meetup"
+                            ${selectedEvent === "Startup Pitch Meetup" ? "selected" : ""}
+                        >
+                            Startup Pitch Meetup
+                        </option>
 
-//                         <option
-//                             value="Cultural Night"
-//                             ${selectedEvent === "Cultural Night" ? "selected" : ""}
-//                         >
-//                             Cultural Night
-//                         </option>
+                    </select>
 
-//                         <option
-//                             value="Startup Pitch Meetup"
-//                             ${selectedEvent === "Startup Pitch Meetup" ? "selected" : ""}
-//                         >
-//                             Startup Pitch Meetup
-//                         </option>
+                </div>
 
-//                     </select>
 
-//                 </div>
+                <div class="form-field">
 
+                    <label>
+                        Student Name
+                    </label>
 
-//                 <div class="form-field">
+                    <input
+                        type="text"
+                        id="studentName"
+                        value="${currentUser.name}"
+                        required
+                    >
 
-//                     <label>
-//                         Student Name
-//                     </label>
+                </div>
 
-//                     <input
-//                         type="text"
-//                         id="studentName"
-//                         value="${currentUser.name}"
-//                         required
-//                     >
 
-//                 </div>
+                <div class="form-field">
 
+                    <label>
+                        Roll Number
+                    </label>
 
-//                 <div class="form-field">
+                    <input
+                        type="text"
+                        id="rollNumber"
+                        value="${currentUser.rollNo}"
+                        required
+                    >
 
-//                     <label>
-//                         Roll Number
-//                     </label>
+                </div>
 
-//                     <input
-//                         type="text"
-//                         id="rollNumber"
-//                         value="${currentUser.rollNo}"
-//                         required
-//                     >
 
-//                 </div>
+                <div class="form-field">
 
+                    <label>
+                        Email Address
+                    </label>
 
-//                 <div class="form-field">
+                    <input
+                        type="email"
+                        id="studentEmail"
+                        value="${currentUser.email}"
+                        required
+                    >
 
-//                     <label>
-//                         Email Address
-//                     </label>
+                </div>
 
-//                     <input
-//                         type="email"
-//                         id="studentEmail"
-//                         value="${currentUser.email}"
-//                         required
-//                     >
 
-//                 </div>
+                <div class="form-field">
 
+                    <label>
+                        Department
+                    </label>
 
-//                 <div class="form-field">
+                    <select id="department">
 
-//                     <label>
-//                         Department
-//                     </label>
+                        <option>
+                            Computer Science
+                        </option>
 
-//                     <select id="department">
+                        <option>
+                            Information Technology
+                        </option>
 
-//                         <option>
-//                             Computer Science
-//                         </option>
+                        <option>
+                            Electronics
+                        </option>
 
-//                         <option>
-//                             Information Technology
-//                         </option>
+                        <option>
+                            Mechanical
+                        </option>
 
-//                         <option>
-//                             Electronics
-//                         </option>
+                        <option>
+                            Management
+                        </option>
 
-//                         <option>
-//                             Mechanical
-//                         </option>
+                    </select>
 
-//                         <option>
-//                             Management
-//                         </option>
+                </div>
 
-//                     </select>
 
-//                 </div>
+                <div class="form-field">
 
+                    <label>
+                        Year / Semester
+                    </label>
 
-//                 <div class="form-field">
+                    <select id="year">
 
-//                     <label>
-//                         Year / Semester
-//                     </label>
+                        <option>
+                            1st Year
+                        </option>
 
-//                     <select id="year">
+                        <option>
+                            2nd Year
+                        </option>
 
-//                         <option>
-//                             1st Year
-//                         </option>
+                        <option selected>
+                            3rd Year
+                        </option>
 
-//                         <option>
-//                             2nd Year
-//                         </option>
+                        <option>
+                            4th Year
+                        </option>
 
-//                         <option selected>
-//                             3rd Year
-//                         </option>
+                    </select>
 
-//                         <option>
-//                             4th Year
-//                         </option>
+                </div>
 
-//                     </select>
 
-//                 </div>
+                <div class="form-field">
 
+                    <label>
+                        Contact Number
+                    </label>
 
-//                 <div class="form-field">
+                    <input
+                        type="tel"
+                        id="contactNumber"
+                        placeholder="Enter contact number"
+                        required
+                    >
 
-//                     <label>
-//                         Contact Number
-//                     </label>
+                </div>
 
-//                     <input
-//                         type="tel"
-//                         id="contactNumber"
-//                         placeholder="Enter contact number"
-//                         required
-//                     >
 
-//                 </div>
+                <div class="form-field">
 
+                    <label>
+                        Participation Type
+                    </label>
 
-//                 <div class="form-field">
+                    <select id="participationType">
 
-//                     <label>
-//                         Participation Type
-//                     </label>
+                        <option>
+                            Participant
+                        </option>
 
-//                     <select id="participationType">
+                        <option>
+                            Volunteer
+                        </option>
 
-//                         <option>
-//                             Participant
-//                         </option>
+                        <option>
+                            Audience
+                        </option>
 
-//                         <option>
-//                             Volunteer
-//                         </option>
+                    </select>
 
-//                         <option>
-//                             Audience
-//                         </option>
+                </div>
 
-//                     </select>
+            </div>
 
-//                 </div>
 
-//             </div>
+            <div class="form-actions">
 
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+                    Register for Event
+                </button>
 
-//             <div class="form-actions">
+                <button
+                    type="reset"
+                    class="btn-secondary"
+                >
+                    Clear
+                </button>
 
-//                 <button
-//                     type="submit"
-//                     class="btn-primary"
-//                 >
-//                     Register for Event
-//                 </button>
+            </div>
 
-//                 <button
-//                     type="reset"
-//                     class="btn-secondary"
-//                 >
-//                     Clear
-//                 </button>
+        </form>
 
-//             </div>
+    `;
 
-//         </form>
+}
 
-//     `;
 
-// }
+/* =========================================================
+   OPEN REGISTRATION WITH EVENT SELECTED
+========================================================= */
 
+function openRegistration(eventName) {
 
-// /* =========================================================
-//    OPEN REGISTRATION WITH EVENT SELECTED
-// ========================================================= */
+    switchView("register");
 
-// function openRegistration(eventName) {
 
-//     switchView("register");
+    setTimeout(() => {
 
+        const select =
+            document.getElementById(
+                "registrationEvent"
+            );
 
-//     setTimeout(() => {
 
-//         const select =
-//             document.getElementById(
-//                 "registrationEvent"
-//             );
+        if (select) {
 
+            select.value =
+                eventName;
 
-//         if (select) {
+        }
 
-//             select.value =
-//                 eventName;
+    }, 50);
 
-//         }
+}
 
-//     }, 50);
 
-// }
+/* =========================================================
+   SUBMIT EVENT REGISTRATION
+========================================================= */
 
+function submitEventRegistration(event) {
 
-// /* =========================================================
-//    SUBMIT EVENT REGISTRATION
-// ========================================================= */
+    event.preventDefault();
 
-// function submitEventRegistration(event) {
 
-//     event.preventDefault();
+    const eventName =
+        document.getElementById(
+            "registrationEvent"
+        ).value;
 
 
-//     const eventName =
-//         document.getElementById(
-//             "registrationEvent"
-//         ).value;
+    if (!eventName) {
 
+        alert(
+            "Please select an event."
+        );
 
-//     if (!eventName) {
+        return;
 
-//         alert(
-//             "Please select an event."
-//         );
+    }
 
-//         return;
 
-//     }
+    const selectedEvent =
+        events.find(
+            event => event.name === eventName
+        );
 
 
-//     const selectedEvent =
-//         events.find(
-//             event => event.name === eventName
-//         );
+    if (selectedEvent) {
 
+        selectedEvent.registered =
+            true;
 
-//     if (selectedEvent) {
+    }
 
-//         selectedEvent.registered =
-//             true;
 
-//     }
+    updateStatistics();
 
 
-//     updateStatistics();
+    document.getElementById(
+        "content-body"
+    ).innerHTML = `
 
+        <div class="success-box">
 
-//     document.getElementById(
-//         "content-body"
-//     ).innerHTML = `
+            <strong>
+                Registration Successful!
+            </strong>
 
-//         <div class="success-box">
+            <br><br>
 
-//             <strong>
-//                 Registration Successful!
-//             </strong>
+            You have successfully registered for
+            <strong>${eventName}</strong>.
 
-//             <br><br>
+            <br>
 
-//             You have successfully registered for
-//             <strong>${eventName}</strong>.
+            Your registration has been recorded.
 
-//             <br>
+        </div>
 
-//             Your registration has been recorded.
 
-//         </div>
+        <button
+            class="btn-primary"
+            onclick="switchView('myEvents')"
+        >
+            View My Events
+        </button>
 
+    `;
 
-//         <button
-//             class="btn-primary"
-//             onclick="switchView('myEvents')"
-//         >
-//             View My Events
-//         </button>
+}
 
-//     `;
 
-// }
+/* =========================================================
+   DUMMY QR ATTENDANCE PASS VIEW (NO CAMERA FOR USER)
+========================================================= */
 
+let dummyPassNonce = 1042;
 
-// /* =========================================================
-//    QR ATTENDANCE VIEW
-// ========================================================= */
 
-// function generateAttendanceView() {
+function buildDummyQRCodeSVG(seedText) {
 
-//     return `
+    /* Deterministic 21x21 QR-like matrix with standard finder patterns */
+    const size = 21;
+    const grid = Array.from({ length: size }, () => Array(size).fill(false));
 
-//         <div class="info-box">
+    function drawFinder(rowOffset, colOffset) {
+        for (let r = 0; r < 7; r++) {
+            for (let c = 0; c < 7; c++) {
+                const isBorder = r === 0 || r === 6 || c === 0 || c === 6;
+                const isInner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
+                grid[rowOffset + r][colOffset + c] = isBorder || isInner;
+            }
+        }
+    }
 
-//             <strong>
-//                 Digital Attendance
-//             </strong>
+    drawFinder(0, 0);
+    drawFinder(0, size - 7);
+    drawFinder(size - 7, 0);
 
-//             <br>
+    /* Timing patterns */
+    for (let i = 8; i < size - 8; i++) {
+        grid[6][i] = i % 2 === 0;
+        grid[i][6] = i % 2 === 0;
+    }
 
-//             Ask the Coordinator to display the QR code
-//             for the ongoing event and scan it using the camera below.
+    /* Seed hash from seedText */
+    let hash = 2166136261;
+    for (let i = 0; i < seedText.length; i++) {
+        hash ^= seedText.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+    }
 
-//         </div>
+    for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+            const inTopLeft = r < 8 && c < 8;
+            const inTopRight = r < 8 && c >= size - 8;
+            const inBottomLeft = r >= size - 8 && c < 8;
+            const isTiming = r === 6 || c === 6;
 
+            if (!inTopLeft && !inTopRight && !inBottomLeft && !isTiming) {
+                hash ^= (r * 31 + c * 17) & 0xff;
+                hash = Math.imul(hash, 16777619);
+                grid[r][c] = (Math.abs(hash) % 10) < 5;
+            }
+        }
+    }
 
-//         <div class="attendance-layout">
+    let rects = "";
+    for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+            if (grid[r][c]) {
+                rects += `<rect x="${c + 2}" y="${r + 2}" width="1" height="1" fill="#111118" />`;
+            }
+        }
+    }
 
+    return `
+        <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" aria-label="Dummy Attendance QR Code">
+            <rect width="25" height="25" fill="#ffffff" />
+            ${rects}
+        </svg>
+    `;
 
-//             <div class="scanner-card">
+}
 
-//                 <h3>
-//                     <i class="bi bi-qr-code-scan"></i>
-//                     Scan Event QR
-//                 </h3>
 
-//                 <p>
-//                     Allow camera access and point your camera
-//                     towards the Coordinator's QR code.
-//                 </p>
+function generateAttendanceView() {
 
+    const activeEvents =
+        events.filter(
+            event =>
+                event.registered &&
+                (event.status === "ongoing" || event.status === "upcoming")
+        );
 
-//                 <div id="qr-reader"></div>
+    const defaultEvent =
+        activeEvents[0] || events[0];
 
+    let optionsHTML = "";
 
-//                 <div class="scanner-actions">
+    activeEvents.forEach(ev => {
+        optionsHTML += `
+            <option value="${ev.name}" ${ev.id === defaultEvent.id ? "selected" : ""}>
+                ${ev.name} (${ev.status === "ongoing" ? "Live Now" : ev.date})
+            </option>
+        `;
+    });
 
-//                     <button
-//                         class="btn-primary"
-//                         onclick="startQRScanner()"
-//                     >
-//                         <i class="bi bi-camera"></i>
-//                         Start Scanner
-//                     </button>
+    const tokenString =
+        `CC-PASS|${currentUser.rollNo}|${currentUser.name}|${defaultEvent.name}|#${dummyPassNonce}`;
 
-//                     <button
-//                         class="btn-secondary"
-//                         onclick="stopQRScanner()"
-//                     >
-//                         Stop Scanner
-//                     </button>
+    return `
 
-//                 </div>
+        <div class="info-box">
 
+            <strong>
+                <i class="bi bi-qr-code"></i>
+                Digital Attendance QR Pass
+            </strong>
 
-//                 <div
-//                     id="scanStatus"
-//                     class="scan-status"
-//                 >
-//                     Scanner is ready.
-//                 </div>
+            <br>
 
-//             </div>
+            Display this Dummy QR Pass to the Event <strong>Host</strong> or <strong>Coordinator</strong> at the venue. They will scan your QR pass with their camera to mark your attendance.
 
+        </div>
 
-//             <div class="attendance-info">
 
-//                 <h3>
-//                     How to Mark Attendance
-//                 </h3>
+        <div class="attendance-layout">
 
-//                 <ul>
+            <div class="scanner-card">
 
-//                     <li>
-//                         Attend the event at the specified venue.
-//                     </li>
+                <h3>
+                    <i class="bi bi-person-badge"></i>
+                    Student Attendance QR Pass
+                </h3>
 
-//                     <li>
-//                         Ask the Coordinator to display the
-//                         event attendance QR code.
-//                     </li>
+                <p>
+                    Present this QR code to the Host / Coordinator scanner.
+                </p>
 
-//                     <li>
-//                         Click "Start Scanner".
-//                     </li>
+                <div style="max-width: 340px; margin: 0 auto 14px; text-align: left;">
+                    <label style="font-size: 12px; font-weight: 600; color: #475569; display: block; margin-bottom: 5px;">
+                        Select Registered Event
+                    </label>
+                    <select
+                        id="userQrEventSelect"
+                        onchange="updateUserDummyQRPass()"
+                        style="width: 100%; padding: 8px 12px; border-radius: 7px; border: 1px solid #cbd5e1; font-size: 13px;"
+                    >
+                        ${optionsHTML}
+                    </select>
+                </div>
 
-//                     <li>
-//                         Allow camera permission when requested.
-//                     </li>
+                <div class="dummy-qr-box" id="dummyQrContainer">
+                    ${buildDummyQRCodeSVG(tokenString)}
+                </div>
 
-//                     <li>
-//                         Point your camera at the QR code.
-//                     </li>
+                <div class="qr-pass-meta" id="dummyQrMeta">
+                    <p>
+                        <span>Student:</span>
+                        <strong>${currentUser.name} (${currentUser.rollNo})</strong>
+                    </p>
+                    <p>
+                        <span>Event:</span>
+                        <strong id="qrMetaEventName">${defaultEvent.name}</strong>
+                    </p>
+                    <p>
+                        <span>Venue:</span>
+                        <strong id="qrMetaVenue">${defaultEvent.venue}</strong>
+                    </p>
+                    <p>
+                        <span>Pass ID:</span>
+                        <strong id="qrMetaToken">CC-${currentUser.rollNo}-${dummyPassNonce}</strong>
+                    </p>
+                </div>
 
-//                     <li>
-//                         After successful scanning, attendance
-//                         will be marked for the event.
-//                     </li>
+                <div class="scanner-actions">
 
-//                 </ul>
+                    <button
+                        class="btn-primary"
+                        onclick="refreshDummyQRPass()"
+                    >
+                        <i class="bi bi-arrow-clockwise"></i>
+                        Refresh Dummy QR
+                    </button>
 
-//                 <div class="info-box">
+                </div>
 
-//                     <strong>
-//                         Important:
-//                     </strong>
+                <div
+                    id="scanStatus"
+                    class="scan-status"
+                >
+                    <span class="status-pill status-registered">Ready to be scanned by Host / Coordinator</span>
+                </div>
 
-//                     Only scan the QR code displayed by the
-//                     authorized event Coordinator.
+            </div>
 
-//                 </div>
 
-//             </div>
+            <div class="attendance-info">
 
-//         </div>
+                <h3>
+                    How Attendance Works
+                </h3>
 
-//     `;
+                <ul>
 
-// }
+                    <li>
+                        Select your registered ongoing or upcoming event above.
+                    </li>
 
+                    <li>
+                        Your unique student Dummy QR Pass is generated automatically.
+                    </li>
 
-// /* =========================================================
-//    QR SCANNER
-// ========================================================= */
+                    <li>
+                        Show this QR pass at the venue entrance.
+                    </li>
 
-// let qrScanner = null;
+                    <li>
+                        The <strong>Event Host</strong> or <strong>Coordinator</strong> will use their dashboard camera scanner to scan your QR code.
+                    </li>
 
-// let scannerRunning = false;
+                    <li>
+                        Once scanned by the Host or Coordinator, your attendance status is marked as <strong>Present</strong>.
+                    </li>
 
+                </ul>
 
-// function startQRScanner() {
+                <div class="info-box">
 
-//     const status =
-//         document.getElementById(
-//             "scanStatus"
-//         );
+                    <strong>
+                        Note:
+                    </strong>
 
+                    Students do not need camera access. Camera QR scanning is enabled on the Host and Coordinator dashboards.
 
-//     if (!window.Html5Qrcode) {
+                </div>
 
-//         if (status) {
+            </div>
 
-//             status.className =
-//                 "scan-status scan-error";
+        </div>
 
-//             status.innerText =
-//                 "QR scanner library could not be loaded.";
+    `;
 
-//         }
+}
 
-//         return;
 
-//     }
+function updateUserDummyQRPass() {
 
+    const select =
+        document.getElementById("userQrEventSelect");
 
-//     if (scannerRunning) {
+    const qrContainer =
+        document.getElementById("dummyQrContainer");
 
-//         return;
+    if (!select || !qrContainer) return;
 
-//     }
+    const selectedEvent =
+        events.find(ev => ev.name === select.value) || events[0];
 
+    const tokenString =
+        `CC-PASS|${currentUser.rollNo}|${currentUser.name}|${selectedEvent.name}|#${dummyPassNonce}`;
 
-//     qrScanner =
-//         new Html5Qrcode(
-//             "qr-reader"
-//         );
+    qrContainer.innerHTML =
+        buildDummyQRCodeSVG(tokenString);
 
+    const eventEl = document.getElementById("qrMetaEventName");
+    const venueEl = document.getElementById("qrMetaVenue");
+    const tokenEl = document.getElementById("qrMetaToken");
 
-//     const config = {
+    if (eventEl) eventEl.innerText = selectedEvent.name;
+    if (venueEl) venueEl.innerText = selectedEvent.venue;
+    if (tokenEl) tokenEl.innerText = `CC-${currentUser.rollNo}-${dummyPassNonce}`;
 
-//         fps: 10,
+}
 
-//         qrbox: {
-//             width: 250,
-//             height: 250
-//         }
 
-//     };
+function refreshDummyQRPass() {
 
+    dummyPassNonce = Math.floor(1000 + Math.random() * 9000);
 
-//     qrScanner
-//         .start(
+    updateUserDummyQRPass();
 
-//             {
-//                 facingMode: "environment"
-//             },
+    const status = document.getElementById("scanStatus");
+    if (status) {
+        status.className = "scan-status scan-success";
+        status.innerHTML = `<i class="bi bi-check-circle"></i> Dummy QR Pass refreshed (Token: <strong>CC-${currentUser.rollNo}-${dummyPassNonce}</strong>)`;
+    }
 
-//             config,
+}
 
-//             qrCodeMessage => {
 
-//                 handleQRScan(
-//                     qrCodeMessage
-//                 );
+/* =========================================================
+   FEEDBACK STORAGE & HELPERS
+========================================================= */
 
-//             },
+function getStoredFeedback() {
 
-//             errorMessage => {
+    try {
 
-//                 // Ignore continuous scan errors.
+        const raw = localStorage.getItem(FEEDBACK_STORAGE_KEY);
 
-//             }
+        if (!raw) {
+            return [];
+        }
 
-//         )
-//         .then(() => {
+        const parsed = JSON.parse(raw);
 
-//             scannerRunning = true;
+        return Array.isArray(parsed) ? parsed : [];
 
-//             if (status) {
+    } catch (err) {
 
-//                 status.className =
-//                     "scan-status";
+        console.error("Failed to read feedback from localStorage:", err);
 
-//                 status.innerText =
-//                     "Camera is active. Point it at the event QR code.";
+        return [];
 
-//             }
+    }
 
-//         })
-//         .catch(error => {
+}
 
-//             console.error(
-//                 "Camera error:",
-//                 error
-//             );
 
+function saveFeedbackToStorage(feedbackItem) {
 
-//             if (status) {
+    const list = getStoredFeedback();
 
-//                 status.className =
-//                     "scan-status scan-error";
+    list.unshift(feedbackItem);
 
-//                 status.innerText =
-//                     "Unable to access the camera. Please allow camera permission.";
+    try {
 
-//             }
+        localStorage.setItem(
+            FEEDBACK_STORAGE_KEY,
+            JSON.stringify(list)
+        );
 
-//         });
+    } catch (err) {
 
-// }
+        console.error("Failed to save feedback to localStorage:", err);
 
+    }
 
-// /* =========================================================
-//    STOP QR SCANNER
-// ========================================================= */
+}
 
-// function stopQRScanner() {
 
-//     if (!qrScanner ||
-//         !scannerRunning) {
+/* =========================================================
+   FEEDBACK VIEW
+========================================================= */
 
-//         return;
+function generateFeedbackView() {
 
-//     }
+    const completedEvents =
+        events.filter(
+            event =>
+                event.status === "ended" &&
+                event.registered
+        );
 
 
-//     qrScanner
-//         .stop()
-//         .then(() => {
+    let eventOptions = "";
 
-//             scannerRunning = false;
 
-//             qrScanner.clear();
+    completedEvents.forEach(event => {
 
+        eventOptions += `
 
-//             const status =
-//                 document.getElementById(
-//                     "scanStatus"
-//                 );
+            <option value="${event.name}">
+                ${event.name} (${event.date})
+            </option>
 
+        `;
 
-//             if (status) {
+    });
 
-//                 status.className =
-//                     "scan-status";
 
-//                 status.innerText =
-//                     "Scanner stopped.";
+    return `
 
-//             }
+        <div class="info-box">
 
-//         })
-//         .catch(error => {
+            <strong>
+                <i class="bi bi-chat-square-heart"></i>
+                Share Your Event Experience
+            </strong>
 
-//             console.error(
-//                 error
-//             );
+            <br>
 
-//         });
+            Select a completed event you participated in, rate your experience on a 5-star scale, and provide your feedback.
 
-// }
+        </div>
 
 
-// /* =========================================================
-//    HANDLE QR SCAN
-// ========================================================= */
+        <div id="feedbackAlertContainer"></div>
 
-// function handleQRScan(qrMessage) {
 
-//     console.log(
-//         "Scanned QR:",
-//         qrMessage
-//     );
+        <form
+            id="userFeedbackForm"
+            onsubmit="submitFeedback(event)"
+            novalidate
+        >
 
+            <div class="form-grid">
 
-//     stopQRScanner();
+                <div class="form-field">
 
+                    <label for="feedbackEvent">
+                        Select Event *
+                    </label>
 
-//     /*
-//         DEMO LOGIC
+                    <select
+                        id="feedbackEvent"
+                        onchange="handleFeedbackEventChange()"
+                        required
+                    >
 
-//         For now any valid QR scan marks the
-//         current ongoing event as attended.
+                        <option value="">
+                            Select a participated event...
+                        </option>
 
-//         Later replace this with:
+                        ${eventOptions}
 
-//         1. Send QR/event ID to backend.
-//         2. Verify student registration.
-//         3. Verify QR is valid and active.
-//         4. Store attendance in MySQL.
-//     */
+                    </select>
 
+                </div>
 
-//     const ongoingEvent =
-//         events.find(
-//             event =>
-//                 event.status === "ongoing" &&
-//                 event.registered
-//         );
 
+                <div class="form-field">
 
-//     const status =
-//         document.getElementById(
-//             "scanStatus"
-//         );
+                    <label for="feedbackCategory">
+                        Feedback Category
+                    </label>
 
+                    <select id="feedbackCategory">
 
-//     if (!ongoingEvent) {
+                        <option value="Overall Experience">
+                            Overall Experience
+                        </option>
 
-//         if (status) {
+                        <option value="Event Organization">
+                            Event Organization
+                        </option>
 
-//             status.className =
-//                 "scan-status scan-error";
+                        <option value="Event Content">
+                            Event Content
+                        </option>
 
-//             status.innerText =
-//                 "No registered ongoing event was found.";
+                        <option value="Venue">
+                            Venue
+                        </option>
 
-//         }
+                        <option value="Host/Coordinator">
+                            Host/Coordinator
+                        </option>
 
-//         return;
+                    </select>
 
-//     }
+                </div>
 
 
-//     ongoingEvent.attendance =
-//         true;
+                <div class="form-field">
 
+                    <label for="feedbackEventDate">
+                        Event Date
+                    </label>
 
-//     if (status) {
+                    <input
+                        type="text"
+                        id="feedbackEventDate"
+                        placeholder="Auto-filled upon selecting an event"
+                        readonly
+                    >
 
-//         status.className =
-//             "scan-status scan-success";
+                </div>
 
-//         status.innerHTML = `
 
-//             <strong>
-//                 <i class="bi bi-check-circle"></i>
-//                 Attendance Marked Successfully!
-//             </strong>
+                <div class="form-field">
 
-//             <br><br>
+                    <label for="feedbackEventStatus">
+                        Event Status
+                    </label>
 
-//             Event:
-//             <strong>
-//                 ${ongoingEvent.name}
-//             </strong>
+                    <input
+                        type="text"
+                        id="feedbackEventStatus"
+                        placeholder="Auto-filled upon selecting an event"
+                        readonly
+                    >
 
-//         `;
+                </div>
 
-//     }
 
-// }
+                <div class="form-field full">
 
+                    <label>
+                        Your Rating *
+                    </label>
 
-// /* =========================================================
-//    FEEDBACK VIEW
-// ========================================================= */
+                    <div
+                        class="star-rating"
+                        id="starRating"
+                        onmouseleave="clearPreviewRating()"
+                    >
 
-// function generateFeedbackView() {
+                        <i
+                            class="bi bi-star"
+                            data-rating="1"
+                            title="1 Star — Poor"
+                            onmouseenter="previewRating(1)"
+                            onclick="selectRating(1)"
+                        ></i>
 
-//     const completedEvents =
-//         events.filter(
-//             event =>
-//                 event.status === "ended" &&
-//                 event.registered
-//         );
+                        <i
+                            class="bi bi-star"
+                            data-rating="2"
+                            title="2 Stars — Fair"
+                            onmouseenter="previewRating(2)"
+                            onclick="selectRating(2)"
+                        ></i>
 
+                        <i
+                            class="bi bi-star"
+                            data-rating="3"
+                            title="3 Stars — Good"
+                            onmouseenter="previewRating(3)"
+                            onclick="selectRating(3)"
+                        ></i>
 
-//     let eventOptions = "";
+                        <i
+                            class="bi bi-star"
+                            data-rating="4"
+                            title="4 Stars — Very Good"
+                            onmouseenter="previewRating(4)"
+                            onclick="selectRating(4)"
+                        ></i>
 
+                        <i
+                            class="bi bi-star"
+                            data-rating="5"
+                            title="5 Stars — Excellent"
+                            onmouseenter="previewRating(5)"
+                            onclick="selectRating(5)"
+                        ></i>
 
-//     completedEvents.forEach(event => {
+                    </div>
 
-//         eventOptions += `
+                    <p
+                        class="rating-text"
+                        id="ratingText"
+                    >
+                        Select a rating: 1 Star (Poor) to 5 Stars (Excellent)
+                    </p>
 
-//             <option value="${event.name}">
-//                 ${event.name}
-//             </option>
+                    <input
+                        type="hidden"
+                        id="selectedRating"
+                        value="0"
+                    >
 
-//         `;
+                </div>
 
-//     });
 
+                <div class="form-field full">
 
-//     return `
+                    <label for="feedbackDescription">
+                        Feedback Message *
+                    </label>
 
-//         <div class="info-box">
+                    <textarea
+                        id="feedbackDescription"
+                        placeholder="Share your experience about this event..."
+                        required
+                    ></textarea>
 
-//             Share your experience after attending an event.
-//             Your feedback helps improve future events.
+                </div>
 
-//         </div>
+            </div>
 
 
-//         <form
-//             onsubmit="submitFeedback(event)"
-//         >
+            <div class="form-actions">
 
-//             <div class="form-grid">
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+                    <i class="bi bi-send"></i>
+                    Submit Feedback
+                </button>
 
+                <button
+                    type="reset"
+                    class="btn-secondary"
+                    onclick="resetRating()"
+                >
+                    Clear
+                </button>
 
-//                 <div class="form-field">
+            </div>
 
-//                     <label>
-//                         Select Event
-//                     </label>
+        </form>
 
-//                     <select
-//                         id="feedbackEvent"
-//                         required
-//                     >
 
-//                         <option value="">
-//                             Select an event...
-//                         </option>
+        <!-- MY FEEDBACK HISTORY SECTION -->
 
-//                         ${eventOptions}
+        <div class="feedback-history-section">
 
-//                     </select>
+            <h3 class="feedback-section-title">
+                <i class="bi bi-clock-history"></i>
+                My Feedback
+            </h3>
 
-//                 </div>
+            <div id="myFeedbackHistoryContainer">
+                ${renderMyFeedbackHistory()}
+            </div>
 
+        </div>
 
-//                 <div class="form-field">
+    `;
 
-//                     <label>
-//                         Student Name
-//                     </label>
+}
 
-//                     <input
-//                         type="text"
-//                         value="${currentUser.name}"
-//                         readonly
-//                     >
 
-//                 </div>
+/* =========================================================
+   HANDLE EVENT SELECTION IN FEEDBACK FORM
+========================================================= */
 
+function handleFeedbackEventChange() {
 
-//                 <div class="form-field full">
+    const eventSelect =
+        document.getElementById("feedbackEvent");
 
-//                     <label>
-//                         Your Rating
-//                     </label>
+    const dateInput =
+        document.getElementById("feedbackEventDate");
 
-//                     <div
-//                         class="star-rating"
-//                         id="starRating"
-//                     >
+    const statusInput =
+        document.getElementById("feedbackEventStatus");
 
-//                         <i
-//                             class="bi bi-star"
-//                             data-rating="1"
-//                             onclick="selectRating(1)"
-//                         ></i>
+    const alertContainer =
+        document.getElementById("feedbackAlertContainer");
 
-//                         <i
-//                             class="bi bi-star"
-//                             data-rating="2"
-//                             onclick="selectRating(2)"
-//                         ></i>
+    if (alertContainer) {
+        alertContainer.innerHTML = "";
+    }
 
-//                         <i
-//                             class="bi bi-star"
-//                             data-rating="3"
-//                             onclick="selectRating(3)"
-//                         ></i>
+    if (!eventSelect || !dateInput || !statusInput) {
+        return;
+    }
 
-//                         <i
-//                             class="bi bi-star"
-//                             data-rating="4"
-//                             onclick="selectRating(4)"
-//                         ></i>
+    const selectedName = eventSelect.value;
 
-//                         <i
-//                             class="bi bi-star"
-//                             data-rating="5"
-//                             onclick="selectRating(5)"
-//                         ></i>
+    if (!selectedName) {
 
-//                     </div>
+        dateInput.value = "";
+        statusInput.value = "";
+        return;
 
-//                     <p
-//                         class="rating-text"
-//                         id="ratingText"
-//                     >
-//                         Select a rating from 1 to 5 stars.
-//                     </p>
+    }
 
-//                     <input
-//                         type="hidden"
-//                         id="selectedRating"
-//                         value="0"
-//                     >
+    const matchedEvent =
+        events.find(
+            event => event.name === selectedName
+        );
 
-//                 </div>
+    if (matchedEvent) {
 
+        dateInput.value = matchedEvent.date;
 
-//                 <div class="form-field full">
+        statusInput.value =
+            matchedEvent.status === "ended"
+                ? "Completed (Participated)"
+                : matchedEvent.status;
 
-//                     <label>
-//                         Feedback Description
-//                     </label>
+    }
 
-//                     <textarea
-//                         id="feedbackDescription"
-//                         placeholder="Tell us about your experience..."
-//                         required
-//                     ></textarea>
+}
 
-//                 </div>
 
-//             </div>
+/* =========================================================
+   STAR RATING (SELECT, HOVER PREVIEW & RESET)
+========================================================= */
 
+let selectedRating = 0;
 
-//             <div class="form-actions">
 
-//                 <button
-//                     type="submit"
-//                     class="btn-primary"
-//                 >
-//                     <i class="bi bi-send"></i>
-//                     Submit Feedback
-//                 </button>
+function selectRating(rating) {
 
-//                 <button
-//                     type="reset"
-//                     class="btn-secondary"
-//                     onclick="resetRating()"
-//                 >
-//                     Clear
-//                 </button>
+    selectedRating = rating;
 
-//             </div>
+    const hidden =
+        document.getElementById("selectedRating");
 
-//         </form>
+    if (hidden) {
+        hidden.value = rating;
+    }
 
-//     `;
+    const alertContainer =
+        document.getElementById("feedbackAlertContainer");
 
-// }
+    if (alertContainer) {
+        alertContainer.innerHTML = "";
+    }
 
+    updateStarVisuals(rating);
 
-// /* =========================================================
-//    STAR RATING
-// ========================================================= */
+}
 
-// let selectedRating = 0;
 
+function previewRating(rating) {
 
-// function selectRating(rating) {
+    const stars =
+        document.querySelectorAll("#starRating i");
 
-//     selectedRating =
-//         rating;
+    stars.forEach((star, index) => {
 
+        if (index < rating) {
+            star.classList.add("hovered");
+        } else {
+            star.classList.remove("hovered");
+        }
 
-//     const stars =
-//         document.querySelectorAll(
-//             "#starRating i"
-//         );
+    });
 
+    const ratingText =
+        document.getElementById("ratingText");
 
-//     stars.forEach(
-//         (star, index) => {
+    if (ratingText && RATING_LABELS[rating]) {
+        ratingText.innerText = RATING_LABELS[rating];
+    }
 
-//             if (index < rating) {
+}
 
-//                 star.classList
-//                     .add("selected");
 
-//                 star.classList
-//                     .remove("bi-star");
+function clearPreviewRating() {
 
-//                 star.classList
-//                     .add("bi-star-fill");
+    const stars =
+        document.querySelectorAll("#starRating i");
 
-//             } else {
+    stars.forEach(star => {
+        star.classList.remove("hovered");
+    });
 
-//                 star.classList
-//                     .remove("selected");
+    updateStarVisuals(selectedRating);
 
-//                 star.classList
-//                     .remove("bi-star-fill");
+}
 
-//                 star.classList
-//                     .add("bi-star");
 
-//             }
+function updateStarVisuals(rating) {
 
-//         }
-//     );
+    const stars =
+        document.querySelectorAll("#starRating i");
 
+    stars.forEach((star, index) => {
 
-//     const ratingText =
-//         document.getElementById(
-//             "ratingText"
-//         );
+        if (index < rating) {
 
+            star.classList.add("selected");
+            star.classList.remove("bi-star");
+            star.classList.add("bi-star-fill");
 
-//     const messages = {
+        } else {
 
-//         1: "Very Poor",
+            star.classList.remove("selected");
+            star.classList.remove("bi-star-fill");
+            star.classList.add("bi-star");
 
-//         2: "Poor",
+        }
 
-//         3: "Average",
+    });
 
-//         4: "Good",
+    const ratingText =
+        document.getElementById("ratingText");
 
-//         5: "Excellent"
+    if (ratingText) {
 
-//     };
+        if (rating > 0 && RATING_LABELS[rating]) {
+            ratingText.innerText = RATING_LABELS[rating];
+        } else {
+            ratingText.innerText =
+                "Select a rating: 1 Star (Poor) to 5 Stars (Excellent)";
+        }
 
+    }
 
-//     if (ratingText) {
+}
 
-//         ratingText.innerText =
-//             `${rating} / 5 — ${messages[rating]}`;
 
-//     }
+function resetRating() {
 
+    selectedRating = 0;
 
-//     const hidden =
-//         document.getElementById(
-//             "selectedRating"
-//         );
+    setTimeout(() => {
 
+        const hidden =
+            document.getElementById("selectedRating");
 
-//     if (hidden) {
+        if (hidden) {
+            hidden.value = "0";
+        }
 
-//         hidden.value =
-//             rating;
+        const dateInput =
+            document.getElementById("feedbackEventDate");
 
-//     }
+        const statusInput =
+            document.getElementById("feedbackEventStatus");
 
-// }
+        if (dateInput) dateInput.value = "";
+        if (statusInput) statusInput.value = "";
 
+        updateStarVisuals(0);
 
-// /* =========================================================
-//    RESET RATING
-// ========================================================= */
+    }, 10);
 
-// function resetRating() {
+}
 
-//     selectedRating = 0;
 
-// }
+/* =========================================================
+   SUBMIT FEEDBACK
+========================================================= */
 
+function submitFeedback(event) {
 
-// /* =========================================================
-//    SUBMIT FEEDBACK
-// ========================================================= */
+    event.preventDefault();
 
-// function submitFeedback(event) {
+    const eventSelect =
+        document.getElementById("feedbackEvent");
 
-//     event.preventDefault();
+    const categorySelect =
+        document.getElementById("feedbackCategory");
 
+    const descriptionInput =
+        document.getElementById("feedbackDescription");
 
-//     const eventName =
-//         document.getElementById(
-//             "feedbackEvent"
-//         ).value;
+    const alertContainer =
+        document.getElementById("feedbackAlertContainer");
 
+    const eventName =
+        eventSelect ? eventSelect.value.trim() : "";
 
-//     const description =
-//         document.getElementById(
-//             "feedbackDescription"
-//         ).value;
+    const category =
+        categorySelect ? categorySelect.value : "Overall Experience";
 
+    const description =
+        descriptionInput ? descriptionInput.value.trim() : "";
 
-//     if (selectedRating === 0) {
 
-//         alert(
-//             "Please select a star rating."
-//         );
+    /* 1. Validate Event Selection */
 
-//         return;
+    if (!eventName) {
 
-//     }
+        if (alertContainer) {
+            alertContainer.innerHTML = `
+                <div class="error-box">
+                    <i class="bi bi-exclamation-circle"></i>
+                    <strong>Validation Error:</strong> Please select an event for which you want to provide feedback.
+                </div>
+            `;
+        }
 
+        if (eventSelect) eventSelect.focus();
+        return;
 
-//     if (!eventName ||
-//         !description.trim()) {
+    }
 
-//         alert(
-//             "Please complete all feedback fields."
-//         );
 
-//         return;
+    /* 2. Validate 5-Star Rating */
 
-//     }
+    if (selectedRating < 1 || selectedRating > 5) {
 
+        if (alertContainer) {
+            alertContainer.innerHTML = `
+                <div class="error-box">
+                    <i class="bi bi-exclamation-circle"></i>
+                    <strong>Validation Error:</strong> Please select a star rating between 1 Star (Poor) and 5 Stars (Excellent).
+                </div>
+            `;
+        }
 
-//     document.getElementById(
-//         "content-body"
-//     ).innerHTML = `
+        return;
 
-//         <div class="success-box">
+    }
 
-//             <strong>
-//                 <i class="bi bi-check-circle"></i>
-//                 Feedback Submitted Successfully!
-//             </strong>
 
-//             <br><br>
+    /* 3. Validate Feedback Message */
 
-//             Thank you for rating
-//             <strong>${eventName}</strong>
-//             ${selectedRating}/5 stars.
+    if (!description) {
 
-//             <br>
+        if (alertContainer) {
+            alertContainer.innerHTML = `
+                <div class="error-box">
+                    <i class="bi bi-exclamation-circle"></i>
+                    <strong>Validation Error:</strong> Please write your feedback message before submitting.
+                </div>
+            `;
+        }
 
-//             Your feedback has been recorded.
+        if (descriptionInput) descriptionInput.focus();
+        return;
 
-//         </div>
+    }
 
 
-//         <button
-//             class="btn-primary"
-//             onclick="switchView('dashboard')"
-//         >
-//             Back to Dashboard
-//         </button>
+    /* Save Feedback for Current Logged-in User */
 
-//     `;
+    const matchedEvent =
+        events.find(e => e.name === eventName);
 
+    const todayFormatted =
+        new Date().toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        });
 
-//     selectedRating = 0;
+    const newFeedback = {
+        id: Date.now(),
+        user: currentUser.name,
+        rollNo: currentUser.rollNo,
+        event: eventName,
+        eventDate: matchedEvent ? matchedEvent.date : todayFormatted,
+        category: category,
+        rating: selectedRating,
+        ratingLabel: RATING_LABELS[selectedRating],
+        message: description,
+        submittedDate: todayFormatted
+    };
 
-// }
+    saveFeedbackToStorage(newFeedback);
 
 
-// /* =========================================================
-//    HELP CENTRE
-// ========================================================= */
+    /* Show Professional Success Message */
 
-// function generateHelpView() {
+    if (alertContainer) {
 
-//     return `
+        alertContainer.innerHTML = `
+            <div class="success-box">
+                <strong>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Thank you for your feedback! Your response has been recorded successfully.
+                </strong>
+                <br>
+                <span>
+                    Event: <strong>${eventName}</strong> &nbsp;|&nbsp;
+                    Rating: <strong>${RATING_LABELS[selectedRating]}</strong>
+                </span>
+            </div>
+        `;
 
-//         <div class="help-item">
+    }
 
-//             <h4>
-//                 How do I register for an event?
-//             </h4>
 
-//             <p>
-//                 Open "Register Event" from the sidebar,
-//                 select the event, enter your student details
-//                 and submit the registration form.
-//             </p>
+    /* Reset Form & Refresh Feedback History Table */
 
-//         </div>
+    const form =
+        document.getElementById("userFeedbackForm");
 
+    if (form) {
+        form.reset();
+    }
 
-//         <div class="help-item">
+    resetRating();
 
-//             <h4>
-//                 How do I mark my attendance?
-//             </h4>
+    const historyContainer =
+        document.getElementById("myFeedbackHistoryContainer");
 
-//             <p>
-//                 During an ongoing event, the Coordinator
-//                 will display the event QR code. Open
-//                 "Scan Attendance", allow camera access
-//                 and scan the displayed QR code.
-//             </p>
+    if (historyContainer) {
+        historyContainer.innerHTML =
+            renderMyFeedbackHistory();
+    }
 
-//         </div>
+}
 
 
-//         <div class="help-item">
+/* =========================================================
+   RENDER MY FEEDBACK HISTORY TABLE
+========================================================= */
 
-//             <h4>
-//                 Can I register for an event after it starts?
-//             </h4>
+function renderMyFeedbackHistory() {
 
-//             <p>
-//                 Registration availability depends on the
-//                 event configuration. If registration is closed,
-//                 the event will not be available for registration.
-//             </p>
+    const allFeedback = getStoredFeedback();
 
-//         </div>
+    const userFeedback =
+        allFeedback.filter(
+            item => item.user === currentUser.name
+        );
 
+    if (userFeedback.length === 0) {
 
-//         <div class="help-item">
+        return `
+            <div class="empty-state" style="padding: 25px 15px;">
+                <i class="bi bi-chat-left-dots" style="font-size: 30px;"></i>
+                <h3>No Feedback Submitted Yet</h3>
+                <p>Your submitted event feedback will appear here.</p>
+            </div>
+        `;
 
-//             <h4>
-//                 How do I submit feedback?
-//             </h4>
+    }
 
-//             <p>
-//                 Open "Give Feedback", select an attended event,
-//                 choose a rating from one to five stars and
-//                 write your feedback description.
-//             </p>
+    let rows = "";
 
-//         </div>
+    userFeedback.forEach(item => {
 
+        const starsFilled = "★".repeat(item.rating);
+        const starsEmpty = "☆".repeat(5 - item.rating);
 
-//         <div class="help-item">
+        rows += `
+            <tr>
+                <td>
+                    <strong>${escapeHTML(item.event)}</strong>
+                    <br>
+                    <small style="color: #64748b;">${escapeHTML(item.category || "Overall Experience")}</small>
+                </td>
+                <td>
+                    <span class="feedback-stars-display">${starsFilled}${starsEmpty}</span>
+                    <span class="feedback-rating-badge">(${item.rating}/5)</span>
+                </td>
+                <td style="white-space: normal; max-width: 380px;">
+                    ${escapeHTML(item.message)}
+                </td>
+                <td>
+                    ${escapeHTML(item.submittedDate)}
+                </td>
+            </tr>
+        `;
 
-//             <h4>
-//                 Can students upload gallery photos?
-//             </h4>
+    });
 
-//             <p>
-//                 No. Students can only view the common event
-//                 gallery. Gallery uploads are handled by
-//                 authorized Host and Coordinator accounts.
-//             </p>
+    return `
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Rating</th>
+                        <th>Feedback</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${rows}
+                </tbody>
+            </table>
+        </div>
+    `;
 
-//         </div>
+}
 
 
-//         <div class="help-item">
+function escapeHTML(str) {
 
-//             <h4>
-//                 Need additional support?
-//             </h4>
+    if (!str) return "";
 
-//             <p>
-//                 Contact the CampusConnect administrative desk
-//                 for account, registration or event-related
-//                 assistance.
-//             </p>
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-//         </div>
+}
 
-//     ;
 
-// }
-// ```
+/* =========================================================
+   HELP CENTRE
+========================================================= */
+
+function generateHelpView() {
+
+    return `
+
+        <div class="help-item">
+
+            <h4>
+                How do I register for an event?
+            </h4>
+
+            <p>
+                Open "Register Event" from the sidebar,
+                select the event, enter your student details
+                and submit the registration form.
+            </p>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <h4>
+                How do I mark my attendance?
+            </h4>
+
+            <p>
+                During an ongoing event, the Coordinator
+                will display the event QR code. Open
+                "Scan Attendance", allow camera access
+                and scan the displayed QR code.
+            </p>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <h4>
+                Can I register for an event after it starts?
+            </h4>
+
+            <p>
+                Registration availability depends on the
+                event configuration. If registration is closed,
+                the event will not be available for registration.
+            </p>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <h4>
+                How do I submit feedback?
+            </h4>
+
+            <p>
+                Open "Give Feedback", select an attended event,
+                choose a rating from one to five stars and
+                write your feedback description.
+            </p>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <h4>
+                Can students upload gallery photos?
+            </h4>
+
+            <p>
+                No. Students can only view the common event
+                gallery. Gallery uploads are handled by
+                authorized Host and Coordinator accounts.
+            </p>
+
+        </div>
+
+
+        <div class="help-item">
+
+            <h4>
+                Need additional support?
+            </h4>
+
+            <p>
+                Contact the CampusConnect administrative desk
+                for account, registration or event-related
+                assistance.
+            </p>
+
+        </div>
+
+    `;
+
+}
